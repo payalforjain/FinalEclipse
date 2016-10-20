@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        InputStreamReader r=new InputStreamReader(System.in);  
+        BufferedReader br=new BufferedReader(r);   
+        
+        try
+        {
+           int a = Integer.parseInt(br.readLine());
+        Double b = Double.parseDouble(br.readLine());
+        String c = br.readLine(); 
+            System.out.println("String: " + c);
+        System.out.println("Double: " + b);
+        System.out.println("Int: "+a);
+        }
+        
+        catch(IOException e)
+            {
+            System.out.println(e);
+        }
+        
+        
+    }
+}
