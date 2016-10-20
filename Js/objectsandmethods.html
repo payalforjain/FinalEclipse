@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+  function ipl(city, year)
+  {
+	  this.city= city;
+	  this.year = year;
+	  this.numberyears = yearstartedplaying;
+  }
+  
+  
+  function yearstartedplaying()
+  {
+	  var yearstarted = 2014;
+	  noofyears =  yearstarted - this.year ;
+	  return noofyears;
+	  
+  }
+  
+  var out = new ipl("chennai", 2012);
+  document.write("no of years is" + out.numberyears());
+</script>
+
+</body>
+</html>

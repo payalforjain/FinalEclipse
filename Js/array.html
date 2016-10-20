@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var x = [1,2,3,4];
+
+document.write(x[0]);
+
+document.write("<br>" + "length of array x is" + x.length);
+
+var empty = [];
+
+empty[0] = "hemanth";
+document.write(empty[0]);
+
+document.write("<br>" + "concatenatng array =>" + empty.concat(x) );
+
+// joining array to string
+
+
+document.write("<br>" + "joining array to string =>" + x.join() );
+document.write("<br>" + "joining array to string =>" + x.join(":") );
+x.pop();
+
+document.write("<br>" + "After poping x =>" + x.join(":") );
+
+x.reverse();
+
+document.write("<br>" + "After reversing =>" + x.join(":") );
+
+x.push(9);
+document.write("<br>" + "After psuhing =>" + x.join(":") );
+
+x.sort();
+document.write("<br>" + "After sorting=>" + x.join(":") );
+
+document.write('<table>');
+document.write('<tr><th>teams</th></tr>');
+
+for(var i =0; i< x.length ; i++)
+	{
+	document.write('<tr><td>' +x[i] + '</th></td>');
+	}
+
+
+
+// associative array
+
+var fighter = [];
+
+fighter["name"] = "hemanth";
+fighter["injury"] = " broken"
+	document.write(fighter["name"]+ "has a" + fighter["injury"] );
+	
+	
+	var p = Math.PI;
+	
+	
+	// u can enter variable name and fucntion to check value. similar to debugging
+	function checksqrt(n)
+	{
+		var sqrt  = Math.sqrt(9);
+		return sqrt;
+	}
+	
+
+
+
+</script>
+</body>
+</html>
