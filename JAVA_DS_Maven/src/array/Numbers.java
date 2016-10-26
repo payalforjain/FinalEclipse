@@ -551,7 +551,7 @@ public class Numbers {
 	if (angle<0) angle=-angle;
 	  return Math.min(360-angle,angle);
 	         
-	    }
+	    }  
 	 
 		public static double sqrt(int number) { // http://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
 			double t;
