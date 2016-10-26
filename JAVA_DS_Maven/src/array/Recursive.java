@@ -4,6 +4,30 @@ import java.util.Scanner;
 
 public class Recursive {
 	
+	
+	public static int exponentRecursion(int base, int exponent)
+	{
+		if(exponent==0)
+			return 1;
+		else
+			return exponentRecursion(base, exponent-1) * base;
+	}
+	
+	
+	//Find if a string is the substring of the other recursion
+	public static boolean findrecursive(String text, String target)
+	{
+
+	 
+	 if (text == null || target == null) {return false;}  // added target null check       
+	
+	 if (target.length() > text.length()) {return false;}
+
+	 if (text.length() == target.length()) {return text.equals(target);}
+	
+	 return text.startsWith(target) || findrecursive(text.substring(1) , target);
+	}
+	
 
 	/* 1) recursive and non-recursive program to generate all possible substrings of a string.  	   
 	 2) Permutation of string*/

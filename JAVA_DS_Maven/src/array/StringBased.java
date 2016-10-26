@@ -47,20 +47,7 @@ public class StringBased {
        
       
     }
-	//Find if a string is the substring of the other recursion
-	public static boolean findrecursive(String text, String target)
-	{
 
-	 
-	 if (text == null || target == null) {return false;}  // added target null check       
-	
-	 if (target.length() > text.length()) {return false;}
-
-	 if (text.length() == target.length()) {return text.equals(target);}
-	
-	 return text.startsWith(target) || findrecursive(text.substring(1) , target);
-	}
-	
 	/* 1) add s1 + s1 = sAdd
 	 * 2) sAdd.contains(s2)
 	 */
@@ -319,81 +306,30 @@ public class StringBased {
 	    }
 			
 	    public static char findFirstNonRepeatedChar(String inputString) {
-	        Map<Character, Integer> charMapCountOne = new LinkedHashMap<Character, Integer>();
+	        
 	        Set<Character> repeatedCharSet = new HashSet<Character>();
-	        for (char c : inputString.toCharArray()) {
-	            if (!charMapCountOne.containsKey(c) && !repeatedCharSet.contains(c)) {
-	                charMapCountOne.put(c, 1);
-	            } else {
-	                repeatedCharSet.add(c);
-	                charMapCountOne.remove(c);
-	            }
+	        char out = '\0'; ;
+	        char[] ch = inputString.toCharArray();
+	        
+	        for(char c: ch)
+	        {
+	        	if(repeatedCharSet.contains(c))
+	        	{
+	        		out  = c;
+	        		break;
+	        	}
+	        	
+	        	repeatedCharSet.add(c);
+	        	
 	        }
-	        if (charMapCountOne.isEmpty()) {
-	            return " ".charAt(0);
-	        }
-	        return charMapCountOne.keySet().iterator().next();
+	        
+	        
+	        return out;
 	    }
+		 
+		 
 	    
-	    public static void printDiamond(int n){
-	   
-	    	System.out.println("Diamond of Stars are \n");
-	    	for (int i = 1; i <= n; i++) {
-	    	for (int j = 0; j < (n - i); j++)
-	    	System.out.print(" ");
-	    	for (int j = 1; j <= i; j++)
-	    	System.out.print("*");
-	    	for (int k = 1; k < i; k++)
-	    	System.out.print("*");
-	    	System.out.println();
-	    	}
 
-	    	for (int i = n - 1; i >= 1; i--) {
-	    	for (int j = 0; j < (n - i); j++)
-	    	System.out.print(" ");
-	    	for (int j = 1; j <= i; j++)
-	    	System.out.print("*");
-	    	for (int k = 1; k < i; k++)
-	    	System.out.print("*");
-	    	System.out.println();
-	    	}
-
-	    	System.out.println();
-	    	}
-
-
-		public static void printDiamonds(int size) {
-			// for odd size
-			// we can do similar thing for even size.
-			if (size % 2 != 0) {
-				int spaceCount = size / 2;
-				int starCount = 1;
-				while (spaceCount >= 0) {
-					for (int i = 0; i < spaceCount; i++) {
-						System.out.print(" ");
-					}
-					for (int j = 0; j < starCount; j++) {
-						System.out.print("*");
-					}
-					starCount = starCount + 2;
-					spaceCount--;
-					System.out.println();
-				}
-				starCount = size - 2;
-				spaceCount = 1;
-				while (starCount > 0) {
-					for (int i = 0; i < spaceCount; i++) {
-						System.out.print(" ");
-					}
-					for (int j = 0; j < starCount; j++) {
-						System.out.print("*");
-					}
-					starCount = starCount - 2;
-					spaceCount++;
-					System.out.println();
-				}
-			}
-		}
 
 		//unique character Check in a string
 		
@@ -434,6 +370,27 @@ public class StringBased {
 		       System.out.println(value);
 		 
 		    }
+	
+		 
+			public static String replaceAll(String source, final String findToken, final String replaceToken) 
+			 {
+			
+				int index =-1;
+				
+				do
+				{	
+				   index = source.indexOf(findToken) ;
+				   if(index > -1)
+				   {	   
+				     source = source.substring(0, index) + replaceToken + source.substring(index  + findToken.length()) ;
+				   }  
+				}while(index !=-1)  ;
+				
+				
+				return source;
+			 } 
+			 
+		 
 		
 		//  Given s string, Find max size of a sub-string, in which no duplicate chars present.
 		 public static String longestSubstringUnrepeatedChar(String input)
@@ -526,40 +483,7 @@ public class StringBased {
 		 }
 			// learn this
 
-		public static String replaceAll(String source, final String findToken, final String replaceToken) 
-		 {
-			 StringBuilder s = new StringBuilder();
-			 if(source.length()==0)
-				 return null;
-			 do
-			{
-				 
-			 
-				     int ind = source.indexOf(findToken);
-				 
-				     
-				     if(ind >= 0)
-				     {
-					    s.append(source.substring(0,ind) + replaceToken);
-					    
-					    source = source.substring(ind + findToken.length());
-					   
-				     }
-				     
-				     else
-				     {
-				    	 s.append(source);
-				    	 source = source.substring(source.length());
-				     }
-				  
-				   
-			      
-		    } while(source.length()>0);
-			 if(source.length()>0)
-				 s.append(source);
-			 
-			 return s.toString();
-		 }
+
 		
 		
 		  public static String findLatest(String string1, String string2) {
@@ -653,6 +577,67 @@ public class StringBased {
 	         
 	         return actualOutput;
 		  }
+		  
+		  
+		    public static void printDiamond(int n){
+		 	   
+		    	System.out.println("Diamond of Stars are \n");
+		    	for (int i = 1; i <= n; i++) {
+		    	for (int j = 0; j < (n - i); j++)
+		    	System.out.print(" ");
+		    	for (int j = 1; j <= i; j++)
+		    	System.out.print("*");
+		    	for (int k = 1; k < i; k++)
+		    	System.out.print("*");
+		    	System.out.println();
+		    	}
+
+		    	for (int i = n - 1; i >= 1; i--) {
+		    	for (int j = 0; j < (n - i); j++)
+		    	System.out.print(" ");
+		    	for (int j = 1; j <= i; j++)
+		    	System.out.print("*");
+		    	for (int k = 1; k < i; k++)
+		    	System.out.print("*");
+		    	System.out.println();
+		    	}
+
+		    	System.out.println();
+		    	}
+
+
+			public static void printDiamonds(int size) {
+				// for odd size
+				// we can do similar thing for even size.
+				if (size % 2 != 0) {
+					int spaceCount = size / 2;
+					int starCount = 1;
+					while (spaceCount >= 0) {
+						for (int i = 0; i < spaceCount; i++) {
+							System.out.print(" ");
+						}
+						for (int j = 0; j < starCount; j++) {
+							System.out.print("*");
+						}
+						starCount = starCount + 2;
+						spaceCount--;
+						System.out.println();
+					}
+					starCount = size - 2;
+					spaceCount = 1;
+					while (starCount > 0) {
+						for (int i = 0; i < spaceCount; i++) {
+							System.out.print(" ");
+						}
+						for (int j = 0; j < starCount; j++) {
+							System.out.print("*");
+						}
+						starCount = starCount - 2;
+						spaceCount++;
+						System.out.println();
+					}
+				}
+			}
 	public static void main(String[] args)
 	{
 		/*System.out.println(removeVowels("hemanth"));

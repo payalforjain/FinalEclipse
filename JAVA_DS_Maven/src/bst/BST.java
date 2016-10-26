@@ -175,111 +175,7 @@ class BST
 	}
     
     
-    /* Function for inorder traversal */
-    public void inorder()
-    {
-        inorder(root);
-    }
-    private void inorder(BSTNode r)
-    {
-        if (r != null)
-        {
-            inorder(r.getLeft());
-            System.out.print(r.getData() +" ");
-            inorder(r.getRight());
-        }
-    }
-    /* Function for preorder traversal */
-    public void preorder()
-    {
-        preorder(root);
-    }
-    private void preorder(BSTNode r)
-    {
-        if (r != null)
-        {
-            System.out.print(r.getData() +" ");
-            preorder(r.getLeft());             
-            preorder(r.getRight());
-        }
-    }
-    /* Function for postorder traversal */
-    public void postorder()
-    {
-        postorder(root);
-    }
-    private void postorder(BSTNode r)
-    {
-        if (r != null)
-        {
-            postorder(r.getLeft());             
-            postorder(r.getRight());
-            System.out.print(r.getData() +" ");
-        }
-    }  
-    
-    /** Iteratively traverses the binary tree in pre-order */
-    public void preorderIter( ) {
-        if( root == null ) return;
-
-        Stack<BSTNode> stack = new Stack<BSTNode>( );
-        stack.push( root );
-
-        while( ! stack.isEmpty( ) ) {
-            BSTNode current = stack.pop( );
-            if( current.right != null ) stack.push( current.right );
-            if( current.left != null ) stack.push( current.left );
-            System.out.print( current.data + " " );
-        }
-    }
-
-    /** Iteratively traverses the binary tree in in-order */
-    public void inorderIter( ) {
-        BSTNode node = root;
-        Stack<BSTNode> stack = new Stack<BSTNode>( );
-        while( ! stack.isEmpty( ) || node != null ) {
-            if( node != null ) {
-                stack.push( node );
-                node = node.left;
-            } else {
-                node = stack.pop( );
-                System.out.print( node.data + " " );
-                node = node.right;
-            }
-        }
-    }
-
-    /** Iteratively traverses the binary tree in post-order */
-    public void postorderIter( ) {
-        if( root == null ) return;
-
-        Stack<BSTNode> stack = new Stack<BSTNode>( );
-        BSTNode current = root;
-
-        while( true ) {
-
-            if( current != null ) {
-                if( current.right != null ) stack.push( current.right );
-                stack.push( current );
-                current = current.left;
-                continue;
-            }
-
-            if( stack.isEmpty( ) ) return;
-            current = stack.pop( );
-
-            if( current.right != null && ! stack.isEmpty( ) && current.right == stack.peek( ) ) {
-                stack.pop( );
-                stack.push( current );
-                current = current.right;
-            } else {
-                System.out.print( current.data + " " );
-                current = null;
-            }
-        }
-    }
-    
-    
+ 
     
     
     
@@ -437,71 +333,7 @@ class BST
    	 
    	    return isValidBST(node.getLeft(), min, node.getData()) && isValidBST(node.getRight(), node.getData(), max);
    	}
-    
-   	
-   	
-   	/*Case 1. [k equals the key at root] The floor of k is k.
-   	Case 2. [k is less than the key at root] The floor of k is in the left subtree.
-   	Case 3. [k is greater than the key at root] The floor of k is in the right subtree 
-   	(if there is any key <= k in right subtree); otherwise it is the key in the root.*/
-   	
-   	int flooring(int data)
-   	{
-   		return flooring(root, data);
-   	}
-   	
-   	int flooring(BSTNode node, int input)
-   	{
-   	    // Base case
-   	    if( node == null )
-   	        return -1;
-   	 
-   	    // We found equal key
-   	    if( node.getData() == input )
-   	        return node.getData();
-   	    else if(input <node.getData())
-   	    	return flooring(node.getLeft(),input);
-   	    else if(input > node.getData())
-   	    {
-   	    	if(node.getRight()!=null)
-   	    	   return flooring(node.getRight(),input);
-   	    	else
-   	    		return node.getData();
-   	    }
-   	    
-   	    return node.getData();
-   	}
-   		
-   	int ceiling(int data)
-   	{
-   		return ceiling(root, data);
-   	}
-   	
-   	int ceiling(BSTNode node, int input)
-   	{
-   	    // Base case
-   	    if( node == null )
-   	        return -1;
-   	 
-   	    // We found equal key
-   	    if( node.getData() == input )
-   	        return node.getData();
-   	    else if(input >node.getData())
-   	    	return ceiling(node.getRight(),input);
-   	    else if(input < node.getData())
-   	    {
-   	    	if(node.getLeft()==null)
-   	    		return node.getData();
-   	    		
-   	    	else
-   	    		return ceiling(node.getLeft(),input);
-   	    	
-   	    		
-   	    }
-   	    return node.getData();
-   	  
-   	}
- 
+  
     
  // prints in level order
    	
@@ -581,6 +413,18 @@ class BST
         }
      }
      
+     
+ 	// get list length
+ 	public int getLength(Node head) {
+ 		int len = 0;
+ 		Node p = head;
+  
+ 		while (p != null) {
+ 			len++;
+ 			p = p.next;
+ 		}
+ 		return len;
+ 	}
 
      static int index = 0;
      
@@ -635,17 +479,7 @@ class BST
 		return sortedListToBST(0, len - 1);
 	}
  
-	// get list length
-	public int getLength(Node head) {
-		int len = 0;
-		Node p = head;
- 
-		while (p != null) {
-			len++;
-			p = p.next;
-		}
-		return len;
-	}
+
  
 	// build tree bottom-up
 	public BSTNode sortedListToBST(int start, int end) {
@@ -710,6 +544,177 @@ class BST
          System.out.println("min depth " + minDepth);
          return maxDepth - minDepth <= 1;
      }
+ 	
+ 	
+ 	  
+    /* Function for inorder traversal */
+    public void inorder()
+    {
+        inorder(root);
+    }
+    private void inorder(BSTNode r)
+    {
+        if (r != null)
+        {
+            inorder(r.getLeft());
+            System.out.print(r.getData() +" ");
+            inorder(r.getRight());
+        }
+    }
+    /* Function for preorder traversal */
+    public void preorder()
+    {
+        preorder(root);
+    }
+    private void preorder(BSTNode r)
+    {
+        if (r != null)
+        {
+            System.out.print(r.getData() +" ");
+            preorder(r.getLeft());             
+            preorder(r.getRight());
+        }
+    }
+    /* Function for postorder traversal */
+    public void postorder()
+    {
+        postorder(root);
+    }
+    private void postorder(BSTNode r)
+    {
+        if (r != null)
+        {
+            postorder(r.getLeft());             
+            postorder(r.getRight());
+            System.out.print(r.getData() +" ");
+        }
+    }  
+    
+    /** Iteratively traverses the binary tree in pre-order */
+    public void preorderIter( ) {
+        if( root == null ) return;
+
+        Stack<BSTNode> stack = new Stack<BSTNode>( );
+        stack.push( root );
+
+        while( ! stack.isEmpty( ) ) {
+            BSTNode current = stack.pop( );
+            if( current.right != null ) stack.push( current.right );
+            if( current.left != null ) stack.push( current.left );
+            System.out.print( current.data + " " );
+        }
+    }
+
+    /** Iteratively traverses the binary tree in in-order */
+    public void inorderIter( ) {
+        BSTNode node = root;
+        Stack<BSTNode> stack = new Stack<BSTNode>( );
+        while( ! stack.isEmpty( ) || node != null ) {
+            if( node != null ) {
+                stack.push( node );
+                node = node.left;
+            } else {
+                node = stack.pop( );
+                System.out.print( node.data + " " );
+                node = node.right;
+            }
+        }
+    }
+
+    /** Iteratively traverses the binary tree in post-order */
+    public void postorderIter( ) {
+        if( root == null ) return;
+
+        Stack<BSTNode> stack = new Stack<BSTNode>( );
+        BSTNode current = root;
+
+        while( true ) {
+
+            if( current != null ) {
+                if( current.right != null ) stack.push( current.right );
+                stack.push( current );
+                current = current.left;
+                continue;
+            }
+
+            if( stack.isEmpty( ) ) return;
+            current = stack.pop( );
+
+            if( current.right != null && ! stack.isEmpty( ) && current.right == stack.peek( ) ) {
+                stack.pop( );
+                stack.push( current );
+                current = current.right;
+            } else {
+                System.out.print( current.data + " " );
+                current = null;
+            }
+        }
+    }
+    
+    
+   	
+   	/*Case 1. [k equals the key at root] The floor of k is k.
+   	Case 2. [k is less than the key at root] The floor of k is in the left subtree.
+   	Case 3. [k is greater than the key at root] The floor of k is in the right subtree 
+   	(if there is any key <= k in right subtree); otherwise it is the key in the root.*/
+   	
+   	int flooring(int data)
+   	{
+   		return flooring(root, data);
+   	}
+   	
+   	int flooring(BSTNode node, int input)
+   	{
+   	    // Base case
+   	    if( node == null )
+   	        return -1;
+   	 
+   	    // We found equal key
+   	    if( node.getData() == input )
+   	        return node.getData();
+   	    else if(input <node.getData())
+   	    	return flooring(node.getLeft(),input);
+   	    else if(input > node.getData())
+   	    {
+   	    	if(node.getRight()!=null)
+   	    	   return flooring(node.getRight(),input);
+   	    	else
+   	    		return node.getData();
+   	    }
+   	    
+   	    return node.getData();
+   	}
+   		
+   	int ceiling(int data)
+   	{
+   		return ceiling(root, data);
+   	}
+   	
+   	int ceiling(BSTNode node, int input)
+   	{
+   	    // Base case
+   	    if( node == null )
+   	        return -1;
+   	 
+   	    // We found equal key
+   	    if( node.getData() == input )
+   	        return node.getData();
+   	    else if(input >node.getData())
+   	    	return ceiling(node.getRight(),input);
+   	    else if(input < node.getData())
+   	    {
+   	    	if(node.getLeft()==null)
+   	    		return node.getData();
+   	    		
+   	    	else
+   	    		return ceiling(node.getLeft(),input);
+   	    	
+   	    		
+   	    }
+   	    return node.getData();
+   	  
+   	}
+ 
      public static void main(String args[])
 {
 	 BST bst = new BST();

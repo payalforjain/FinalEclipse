@@ -12,13 +12,7 @@ import java.util.Date;
 
 public class Numbers {
 	
-	public static int exponentRecursion(int base, int exponent)
-	{
-		if(exponent==0)
-			return 1;
-		else
-			return exponentRecursion(base, exponent-1) * base;
-	}
+
 	
 	
 	
@@ -34,17 +28,7 @@ public class Numbers {
 	}
 	
 	
-	// http://javagtu.blogspot.com/2014/07/calculate-angle-between-hour-hand-and.html
-	public static int cal_angle(int hour,int min)
-    {
-        int h_angle=(int)((hour*60+min)*0.5);
-        int angle=(min*6)-h_angle;
-        //now calculate minimum angle...
-       
-if (angle<0) angle=-angle;
-  return Math.min(360-angle,angle);
-         
-    }
+
 	
 	 public static void concatenateNumbers(long x, long y) {
 	        long temp = y;
@@ -56,18 +40,7 @@ if (angle<0) angle=-angle;
 	    }
 	    
 
-	public static double sqrt(int number) { // http://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
-		double t;
-	 
-		double squareRoot = number / 2;
-	 
-		do {
-			t = squareRoot;
-			squareRoot = (t + (number / t)) / 2;
-		} while ((t - squareRoot) != 0);
-	 
-		return squareRoot;
-	}
+
 
 
 	/* Prints multiplication table in Java */
@@ -103,7 +76,7 @@ if (angle<0) angle=-angle;
 	        int fibo1=1, fibo2=1, fibonacci=1;
 	        for(int i= 3; i<= number; i++){
 	           
-	            //Fibonacci number is sum of previous two Fibonacci number
+	            //Fibonacci number is sum of previous two Fibonacci number 
 	            fibonacci = fibo1 + fibo2;             
 	            fibo1 = fibo2;
 	            fibo2 = fibonacci;
@@ -279,6 +252,8 @@ if (angle<0) angle=-angle;
 	      return result;
 	    }
 	    
+	    
+
 	    
 	    public static void StringToFloatExampleViceVersa()
 	    {
@@ -566,6 +541,31 @@ if (angle<0) angle=-angle;
 	          recursivefun(n+1);   }
 	 }
 	 
+		// http://javagtu.blogspot.com/2014/07/calculate-angle-between-hour-hand-and.html
+		public static int cal_angle(int hour,int min)
+	    {
+	        int h_angle=(int)((hour*60+min)*0.5);
+	        int angle=(min*6)-h_angle;
+	        //now calculate minimum angle...
+	       
+	if (angle<0) angle=-angle;
+	  return Math.min(360-angle,angle);
+	         
+	    }
+	 
+		public static double sqrt(int number) { // http://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
+			double t;
+		 
+			double squareRoot = number / 2;
+		 
+			do {
+				t = squareRoot;
+				squareRoot = (t + (number / t)) / 2;
+			} while ((t - squareRoot) != 0);
+		 
+			return squareRoot;
+		}
+	 
 public static void main(String[] args) 
 {
   System.out.println(sqrt(10));	
@@ -591,9 +591,7 @@ public static void main(String[] args)
 	
 	 // moveAllEvensToLeft(new int[]{1, 4, 3, 4,3, 4, 1, 4, 1, 3, 5, 6});
     
-      
-      
-  	System.out.println(exponentRecursion(2,4));
+
 	System.out.println(exponent(2,4));
 	System.out.println(exponent(0,4));
 	

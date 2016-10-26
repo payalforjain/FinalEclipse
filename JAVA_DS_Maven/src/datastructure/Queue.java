@@ -104,39 +104,7 @@ public void middlelinkedlist() //how to find the middle of a linkedlist.
 
 
 // you can reverse using stack to. Just similar to reversing a list or String
-public void recursiveReverse()
-{
-	recursiveReverse(First);
-}
 
-private void recursiveReverse(Node curr) {
-    if(isEmpty()) { return;}     //curr == null
-    if(curr.next == null) {
-        First = curr;
-        return;
-    }
-    reverse(curr.next);
-    curr.next.next = curr;
-    curr.next = null;
-}
-
-
-
-public void reverse() // Iterative. This is wrong. keep it as refernce
-{
-	reverse(First);
-}
-
-public Node reverse(Node Node) {
-    Node previous = null;
-    while (Node != null) {
-        Node next = Node.next;
-        Node.next = previous;
-        previous = Node;
-        Node = next;
-    }
-    return previous;
-}
 
 public boolean isCyclic() //1)	Loops in a singly linked list 
 { 
@@ -176,6 +144,40 @@ public Item nfromlast(int n)
         behind = behind.next;
     }
     return behind.item;
+}
+
+public void recursiveReverse()
+{
+	recursiveReverse(First);
+}
+
+private void recursiveReverse(Node curr) {
+    if(isEmpty()) { return;}     //curr == null
+    if(curr.next == null) {
+        First = curr;
+        return;
+    }
+    reverse(curr.next);
+    curr.next.next = curr;
+    curr.next = null;
+}
+
+
+
+public void reverse() // Iterative. This is wrong. keep it as refernce
+{
+	reverse(First);
+}
+
+public Node reverse(Node Node) {
+    Node previous = null;
+    while (Node != null) {
+        Node next = Node.next;
+        Node.next = previous;
+        previous = Node;
+        Node = next;
+    }
+    return previous;
 }
 
 
