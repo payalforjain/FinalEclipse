@@ -85,17 +85,40 @@ public class Numbers {
 	        return fibonacci; //Fibonacci number
 	      
 	    }
-
-       public static void  genprimeno(int end)
+	    
+	    public int countPrimes(int end)
 		 {
-			 for(int number = 2; number<=end; number++){
+		     int count = 0;
+			 for(int number = 1; number<end; number++){
 			      //print prime numbers only
 			      if(isPrimeNumber(number)){
-			    	  
-			          System.out.println("prime no is " +number);
+			    	  count++;
+			    	  System.out.println("prime no is " +number);
+			         
 			      }
 			  }
+			  return count;
 		 }
+		 //Leetcode... Better Solution
+	    public int countPrimesBetterSolution(int n) {
+	    	   boolean[] isPrime = new boolean[n];
+	    	   for (int i = 2; i < n; i++) {
+	    	      isPrime[i] = true;
+	    	   }
+	    	   // Loop's ending condition is i * i < n instead of i < sqrt(n)
+	    	   // to avoid repeatedly calling an expensive function sqrt().
+	    	   for (int i = 2; i * i < n; i++) {
+	    	      if (!isPrime[i]) continue;
+	    	      for (int j = i * i; j < n; j += i) {
+	    	         isPrime[j] = false;
+	    	      }
+	    	   }
+	    	   int count = 0;
+	    	   for (int i = 2; i < n; i++) {
+	    	      if (isPrime[i]) count++;
+	    	   }
+	    	   return count;
+	    	}
 		 
 	  public static boolean isPrimeNumber(int number){ // 1)	 find if number is prime or not
 	         
@@ -108,63 +131,7 @@ public class Numbers {
 	    }
 	     
 		 // Write a method to convert an integer into a roman numeral string 
-	public static String DecimalToRomanNumeral(int num) {
-	    if (num < 1 || num > 3999)
-	        return "Invalid Roman Number Value";
-	    String x = "";
-	    while (num >= 1000) {
-	        x += "M";
-	        num -= 1000;        }
-	    while (num >= 900) {
-	        x += "CM";
-	        num -= 900;
-	    }
-	    while (num >= 500) {
-	        x += "D";
-	        num -= 500;
-	    }
-	    while (num >= 400) {
-	        x += "CD";
-	        num -= 400;
-	    }
-	    while (num >= 100) {
-	        x += "C";
-	        num -= 100;
-	    }
-	    while (num >= 90) {
-	        x += "XC";
-	        num -= 90;
-	    }
-	    while (num >= 50) {
-	        x += "L";
-	        num -= 50;
-	    }
-	    while (num >= 40) {
-	        x += "XL";
-	        num -= 40;
-	    }
-	    while (num >= 10) {
-	        x += "X";
-	        num -= 10;
-	    }
-	    while (num >= 9) {
-	        x += "IX";
-	        num -= 9;
-	    }
-	    while (num >= 5) {
-	        x += "V";
-	        num -= 5;
-	    }
-	    while (num >= 4) {
-	        x += "IV";
-	        num -= 4;
-	    }
-	    while (num >= 1) {
-	        x += "I";
-	        num -= 1;
-	    }    
-	    return x;
-	}
+	
 
 	    /*
 	     * checking if number is power of 2 using bit shift operator in java
@@ -202,22 +169,14 @@ public class Numbers {
 	     */
 	  
 	    private static boolean checkPowerOfTwo(int number){
-	         if(number <=0){
-	            throw new IllegalArgumentException("number: " + number);
+	    	if(number <=0){
+	            return false;
 	        }
+	        
 	        return ((number & (number -1)) == 0);
 	    }
 	
-	    
-	    public int reverseNumber(int number){
-	         
-	        int reverse = 0;
-	        while(number != 0){
-	            reverse = (reverse*10)+(number%10);
-	            number = number/10;
-	        }
-	        return reverse;
-	    }
+
 
 	    
 	    
@@ -369,30 +328,7 @@ public class Numbers {
 		    }
 	
 		 
-		 /* A perfect number is a positive integer that is equal to the sum of its proper positive divisors,
-		 that is, the sum of its positive divisors excluding the number itself. Equivalently, a perfect 
-		 number is a number that is half the sum of all of its positive divisors. The first perfect number is 6,
-		 because 1, 2 and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently, the number 6 is
-		 equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. */
 
-
-		 public boolean isPerfectNumber(int number){
-	         
-		        int temp = 0;
-		        for(int i=1;i<=number/2;i++){
-		            if(number%i == 0){
-		                temp += i;
-		            }
-		        }
-		        if(temp == number){
-		            System.out.println("It is a perfect number");
-		            return true;
-		        } else {
-		            System.out.println("It is not a perfect number");
-		            return false;
-		        }
-		    }
-		     
 	
 		   public static int getNumberSum(int number){
 			   
@@ -578,7 +514,7 @@ public static void main(String[] args)
       System.out.println(fibonacci2(i) +" ");
   }
   
-  genprimeno(100);
+  
 
  
   

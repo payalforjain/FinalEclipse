@@ -1,6 +1,6 @@
  package bst;
 
-class BSTNode
+public class BSTNode
 {
     BSTNode left, right;
     int data;

@@ -6,7 +6,7 @@ import datastructure.Queue.Node;
 
 class BST
 {
-    protected BSTNode root;
+    public BSTNode root;
 
     /* Constructor */
     public BST()
@@ -181,26 +181,7 @@ class BST
     
     
     
-    public BSTNode findLca( int t1, int t2)
-    {
-   	 return findLca(root,t1,t2);
-    }
-    
-    public BSTNode findLca(BSTNode node, int t1, int t2) {
-   	    if(node == null) 
-   	        return null;
-   	    
-   	    if(t1 < node.getData() && t2 < node.getData())// both targets are left
-   	       return findLca(node.getLeft(), t1, t2);
-   	    else if (t1 > node.getData() && t2 > node.getData()) // both targets are right
-   	        return findLca(node.getRight(), t1, t2);
-   	     else 
-   	     {
-   	       
-   	    	System.out.println(node.getData());
-   	        return node;
-   	    }
-   	}
+   
     BSTNode nonfirstCommonAncestor(int data1, int data2)
     {
     	return nonfirstCommonAncestor(root, data1, data2);
@@ -258,6 +239,10 @@ class BST
     }
     
     
+    
+    
+ // prints in level order
+   	
     public int findMin()
     {
    	return findMin(root);
@@ -298,121 +283,10 @@ class BST
       	 return node.getData();
     }
     
-    	
-    
-    
-/*Given a binary tree and a sum, determine 
-    if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.*/
-    
-    
-    public boolean pathSum(int a)
-    {
-   	 return pathSum(root,a);
-    }
-    
-    public boolean pathSum(BSTNode node, int a)
-    {
-   	 if(node== null)
-   		 return false;
-   	 if(node.getData()==a && node.getLeft() == null && node.getRight() == null)
-   		 return true;
-   	 else
-   		 return pathSum(node.getLeft(), a - node.getData()) || pathSum(node.getRight(), a - node.getData()) ;
-    }
-    public boolean isValidBST() {
-   	    return isValidBST(root, findMin(), findMax());   
-   	}
-   	 
-   	public boolean isValidBST(BSTNode node, int min, int max){
-   		
-   	    if(node==null) 
-   	        return true;
-   	 
-   	    if(node.getData() < min || node.getData() > max)
-   	        return false;
-   	 
-   	    return isValidBST(node.getLeft(), min, node.getData()) && isValidBST(node.getRight(), node.getData(), max);
-   	}
-  
-    
- // prints in level order
-   	
-  
    	
 
-     public void levelOrderTraversal() {
-    	
-         Queue<BSTNode> s1 = new LinkedList<BSTNode>();
-         Queue<BSTNode> s2 = new LinkedList<BSTNode>();
-         Queue<BSTNode> temp = new LinkedList<BSTNode>();
-         s1.add(root);
-         System.out.println("Level Order Traversal");
-         while(!s1.isEmpty())
-         {
-         	BSTNode n = s1.poll();
-         	
-         	System.out.print(n.getData() + " ");
-         	if(n.getLeft() != null)
-         		s2.add(n.getLeft());
-         	if(n.getRight() != null)
-         		s2.add(n.getRight());
-         
-         	
-         	
-         	if(s1.isEmpty())
-         	{
-         	
-         		System.out.println();
-         		temp = s1;
-         	    s1 = s2;
-         	    s2 = temp;
-         		
-         	}
-         		
-         }
 
- 	}
-
-     public  void printZigZagOrder(){ //	Mirror Image of a Binary tree Queue using stacks. 
-        Stack<BSTNode> s1 = new Stack<BSTNode>();
-        Stack<BSTNode> s2 = new Stack<BSTNode>();
-        Stack<BSTNode> temp =new Stack<BSTNode>() ;
-        s1.push(root);
-        boolean leftToRight = false;
-        System.out.println("ZigZagOrder Traversal");
-        while(!s1.isEmpty())
-        {
-        	BSTNode n = s1.pop();
-        	System.out.print(n.getData() + " ");
-        	if(!leftToRight)
-        	{
-        		if(n.getLeft() != null)
-        			s2.push(n.getLeft());
-        		if(n.getRight() != null)
-        			s2.push(n.getRight());
-        	}
-        	
-        	else
-        	{	
-        		if(n.getRight() != null)
-        			s2.push(n.getRight());
-        		if(n.getLeft() != null)
-        			s2.push(n.getLeft());
-        	}
-        	
-        	if(s1.isEmpty())
-        	{
-        		leftToRight = !leftToRight;
-        		System.out.println();
-        		temp = s1;
-        	    s1 = s2;
-        	    s2 = temp;
-        		
-        	}
-        		
-        }
-     }
-     
+    
      
  	// get list length
  	public int getLength(Node head) {
@@ -742,16 +616,9 @@ class BST
     System.out.println(bst.searchIter(4));
     
     System.out.println("least");
-   bst.findLca(18, 53);
+
    bst.nonfirstCommonAncestor(18, 53);
-    //bst.printZigZagOrder();
-   // bst.preorder();
-    //bst.inorder();
-    //bst.inorderIter();
-   // bst.postorder();
-    //bst.postorderIter();
-    
-    bst.levelOrderTraversal();
+
     System.out.println("Max Depth is" + bst.maxDepth());
     
    System.out.println("Min Depth is" + bst.minDepth()); 

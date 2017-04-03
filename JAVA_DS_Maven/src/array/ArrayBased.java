@@ -75,26 +75,6 @@ public class ArrayBased {
 	
 
 	
-	public static void printRightRotatedArray(int[] array, int rotation){
-			int rotatedIndex = 0;
-			int n = array.length;
-		for(int i = 0; i < array.length; i++) {
-			rotatedIndex = (i + rotation)%n;
-			System.out.println(array[rotatedIndex]);
-		}
-	}
-	public static void printLeftRotatedArray(int[] array, int rotation){
-			int rotatedIndex = 0;
-			int n = array.length;
-		for(int i = 0; i < array.length; i++) {
-			rotatedIndex = (i + (n - (rotation % n)))%n;
-		/*	if(rotatedIndex >= array.length){
-			
-				rotatedIndex = rotatedIndex % array.length;
-			} */
-			System.out.println(array[rotatedIndex]);
-		}
-	}
 	
 	   public static int indexEqualToNumberSortedArray(int[] a)
 	    {
@@ -445,13 +425,8 @@ public class ArrayBased {
 	    		  moveAllEvensToLeft(new int[]{1, 4, 4, 6});
 	    	
 int[] array1 = new int[] {1,2,3,4,5,6,7,8,9,10};
-			
-			System.out.println("*********************Right Rotation*********************");
-			System.out.println("");
-			printRightRotatedArray(array1,2);
-			System.out.println("*********************Left Rotation*********************");
-			System.out.println("");		
-			printLeftRotatedArray(array1,2);
+
+		
 	    	
 	    	  System.out.println(indexEqualToNumberSortedArray(new int[] {1, 2, 4, 5, 6, 7}));
 		       System.out.println(indexEqualToNumberSortedArray(new int[] {0, 3, 4, 5, 6, 7}));
