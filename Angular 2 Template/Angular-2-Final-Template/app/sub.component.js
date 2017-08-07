@@ -10,13 +10,13 @@ var core_1 = require("@angular/core");
 var SubComponent = (function () {
     function SubComponent() {
     }
+    SubComponent = __decorate([
+        core_1.Component({
+            selector: 'sub-app',
+            template: '<h1>SubComponent...</h1>'
+        })
+    ], SubComponent);
     return SubComponent;
 }());
-SubComponent = __decorate([
-    core_1.Component({
-        selector: 'sub-app',
-        template: '<h1>SubComponent...</h1>'
-    })
-], SubComponent);
 exports.SubComponent = SubComponent;
 //# sourceMappingURL=sub.component.js.map

@@ -15,14 +15,14 @@ var AppComponent = (function () {
     AppComponent.prototype.onSubmit = function (value) {
         console.log(value);
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            templateUrl: "app/app.component.html",
+            styles: ["input.ng-invalid{border-left:5px solid red;}\n  input.ng-valid{border-left: 5px solid green;}"]
+        })
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: "app/app.component.html",
-        styles: ["input.ng-invalid{border-left:5px solid red;}\n  input.ng-valid{border-left: 5px solid green;}"]
-    })
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
