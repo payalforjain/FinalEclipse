@@ -5,36 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.concretepage.dao.IArticleDAO;
+import com.concretepage.dao.ArticleRepository;
 import com.concretepage.entity.Article;
 @Service
 public class ArticleService implements IArticleService {
 	@Autowired
-	private IArticleDAO articleDAO;
+	private ArticleRepository articleRepository;
 	@Override
-	public Article getArticleById(int articleId) {
-		Article obj = articleDAO.getArticleById(articleId);
+	public Article getArticleById(String articleId) {
+		Article obj = articleRepository.findOne(""+articleId);
+		
 		return obj;
 	}	
 	@Override
 	public List<Article> getAllArticles(){
-		return articleDAO.getAllArticles();
+		return articleRepository.findAll();
+		
 	}
 	@Override
-	public synchronized boolean createArticle(Article article){
-       if (articleDAO.articleExists(article.getTitle(), article.getCategory())) {
-    	   return false;
-       } else {
-    	   articleDAO.createArticle(article);
-    	   return true;
-       }
+	public boolean createArticle(Article article){
+		
+		articleRepository.save(article);
+		
+		return true;
 	}
 	@Override
 	public void updateArticle(Article article) {
-		articleDAO.updateArticle(article);
+	articleRepository.save(article);
+		
 	}
 	@Override
-	public void deleteArticle(int articleId) {
-		articleDAO.deleteArticle(articleId);
+	public void deleteArticle(String articleId) {
+
+		articleRepository.delete(articleId);
 	}
 }

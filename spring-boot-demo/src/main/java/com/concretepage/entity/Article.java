@@ -9,22 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="articles")
-public class Article implements Serializable { 
-	private static final long serialVersionUID = 1L;
+public class Article  { 
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="article_id")
-    private int articleId;  
-	@Column(name="title")
-    private String title;
-	@Column(name="category")	
+    private String id;  
+	private String title;
 	private String category;
-	public int getArticleId() {
-		return articleId;
+	
+    public String getId() {
+		return id;
 	}
-	public void setArticleId(int articleId) {
-		this.articleId = articleId;
+	public void setId(String id) {
+		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}

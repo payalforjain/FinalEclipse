@@ -6,8 +6,8 @@ import com.concretepage.entity.Article;
 
 public interface IArticleService {
      List<Article> getAllArticles();
-     Article getArticleById(int articleId);
+     Article getArticleById(String articleId);
      boolean createArticle(Article article);
      void updateArticle(Article article);
-     void deleteArticle(int articleId);
+     void deleteArticle(String articleId);
 }

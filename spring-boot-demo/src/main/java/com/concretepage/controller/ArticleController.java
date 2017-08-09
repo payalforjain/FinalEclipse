@@ -21,13 +21,13 @@ import com.concretepage.service.IArticleService;
 
 @Controller
 @RequestMapping("user")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class ArticleController {
 	@Autowired
 	private IArticleService articleService;
 	@GetMapping("article")
 	public ResponseEntity<Article> getArticleById(@RequestParam("id") String id) {
-		Article article = articleService.getArticleById(Integer.parseInt(id));
+		Article article = articleService.getArticleById(id);
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}
 	@GetMapping("all-articles")
@@ -42,7 +42,7 @@ public class ArticleController {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/article?id={id}").buildAndExpand(article.getArticleId()).toUri());
+        headers.setLocation(builder.path("/article?id={id}").buildAndExpand(article.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	@PutMapping("article")
@@ -52,7 +52,7 @@ public class ArticleController {
 	}
 	@DeleteMapping("article")
 	public ResponseEntity<Void> deleteArticle(@RequestParam("id") String id) {
-		articleService.deleteArticle(Integer.parseInt(id));
+		articleService.deleteArticle(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}	
 } 
