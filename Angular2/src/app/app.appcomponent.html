@@ -1,0 +1,23 @@
+﻿
+
+<div>Template URL is {{appTitle}} </div>
+<div *ngIf = 'appStatus'>{{appTitle}} is diplayed</div>
+<div *ngFor = 'let lst of appList'> 
+   <ul> 
+      <li>{{lst.ID}}</li> 
+      <li>{{lst.Name}}</li>
+      <img [src] = 'lst.url'>
+   </ul> 
+</div>
+<div> Router Example </div>
+ <ul>
+      <li><a [routerLink] = "['/Product']">Product</a></li>
+      <li><a [routerLink] = "['/Inventory']">Inventory</a></li>
+   </ul>
+   <router-outlet></router-outlet>'
+<product-form></product-form>
+
+The first Topic is {{appData[0]}}
+
+<app-article> </app-article>
+
