@@ -82,4 +82,9 @@ public class BookController {
     response.put("books", books);
     return response;
   }
+  @RequestMapping(method = RequestMethod.DELETE, value="/test")
+  public String test()
+  {
+	  return "test";
+  }
 }

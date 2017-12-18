@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-import datastructure.Queue.Node;
+import leetcode.easy.linkedlistPrac.Queue.Node;
 
 class BST
 {
