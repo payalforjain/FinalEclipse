@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Stack;
@@ -17,59 +15,12 @@ import java.util.StringTokenizer;
 
 public class StringBased {
 
-	// using regular expression
-	public static String removeVowels(String data) {
-		String temp = data.replaceAll("[AaEeIiOoUu]", "");
-
-		return temp;
-	}
-
-	// String builder
-	public static String removeVowelsBuilder(final String string) {
-		final String vowels = "AaEeIiOoUu";
-		final StringBuilder builder = new StringBuilder();
-		char[] s = string.toCharArray();
-		for (final char c : s)
-			if (vowels.indexOf(c) < 0)
-				builder.append(c);
-		return builder.toString();
-	}
-
 	// Find if a string is the substring of the other
 	public static void findMe(String mainString, String subString) {
 
 		System.out.println("Check it status" + mainString.contains(subString));
 		System.out.println(mainString.indexOf(subString) > -1 ? true : false);
 
-	}
-
-	/*
-	 * 1) add s1 + s1 = sAdd 2) sAdd.contains(s2)
-	 */
-
-	// Find if a string is rotation of another string ex. abcd , dabc is
-	// rotation of abcd
-	public static boolean isRotated(String s1, String s2) {
-		if (s1.length() != s2.length()) {
-			return false;
-		}
-		String sAdd = s1 + s1;
-		if (sAdd.contains(s2)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public static boolean isRotatedIndex(String s1, String s2) {
-		if (s1.length() != s2.length()) {
-			return false;
-		}
-		String sAdd = s1 + s1;
-		if (sAdd.indexOf(s2) > -1)
-			return true;
-
-		return false;
 	}
 
 	// reminder of String
@@ -99,63 +50,6 @@ public class StringBased {
 		x = x ^ y;
 		System.out.println("After swap: x = " + x + " y = " + y);
 
-	}
-
-	// Concatenate two numbers. for e.g. 123, 456 = 123456
-
-	private static String removeDuplicateCharactersFromWord(String word) {
-
-		String result = new String("");
-
-		for (int i = 0; i < word.length(); i++) {
-			if (!result.contains("" + word.charAt(i))) {
-				result += "" + word.charAt(i);
-			}
-		}
-
-		return result;
-	}
-
-	public static boolean isAnagram(String word, String anagram) {
-		if (word.length() != anagram.length()) {
-			return false;
-		}
-		char[] chars = word.toCharArray();
-		for (char c : chars) {
-			int index = anagram.indexOf(c);
-			if (index != -1) {
-				anagram = anagram.substring(0, index) + anagram.substring(index + 1, anagram.length());
-			} else {
-				return false;
-			}
-		}
-		return anagram.isEmpty();
-	}
-
-	/*
-	 * * Another way to check if two Strings are anagram or not in Java * This
-	 * method assumes that both word and anagram are not null and lowercase
-	 * * @return true, if both Strings are anagram.
-	 */ public static boolean iAnagram(String word, String anagram) {
-		char[] charFromWord = word.toCharArray();
-		char[] charFromAnagram = anagram.toCharArray();
-		Arrays.sort(charFromWord);
-		Arrays.sort(charFromAnagram);
-		return Arrays.equals(charFromWord, charFromAnagram);
-	}
-
-	public static boolean checkAnagram(String first, String second) {
-		char[] characters = first.toCharArray();
-		StringBuilder sbSecond = new StringBuilder(second);
-		for (char ch : characters) {
-			int index = sbSecond.indexOf("" + ch);
-			if (index != -1) {
-				sbSecond.deleteCharAt(index);
-			} else {
-				return false;
-			}
-		}
-		return sbSecond.length() == 0 ? true : false;
 	}
 
 	public static boolean palindromeUsingStack(String input) {
@@ -342,23 +236,6 @@ public class StringBased {
 
 		}
 
-		return out;
-	}
-
-	// unique character Check in a string
-
-	public static boolean uniquecharCheck(String input) {
-		char[] in = input.toCharArray();
-		Set<Character> s = new HashSet<Character>();
-		boolean out = true;
-		for (char temp : in) {
-			if (!s.contains(temp)) {
-				s.add(temp);
-
-			} else if (s.contains(temp))
-				out = false;
-
-		}
 		return out;
 	}
 

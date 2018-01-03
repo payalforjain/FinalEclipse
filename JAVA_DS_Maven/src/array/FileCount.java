@@ -16,9 +16,6 @@ public class FileCount {
 
 	public Map<String, Integer> wordcou(String Filename)
 
-	// word count by sorting values and max char and words
-	// REPLACED non Characters
-
 	{
 		Map<String, Integer> m = new HashMap<String, Integer>();
 		File f = new File(Filename);
@@ -27,25 +24,25 @@ public class FileCount {
 
 		try {
 			Scanner sc = new Scanner(f);
-			while (sc.hasNextLine()) {
-				while (sc.hasNext()) {
-					String tmp = sc.next().replaceAll("[^a-zA-Z]+", "");
 
-					if (!tmp.equals("")) {
-						if (m.containsKey(tmp)) {
-							m.put(tmp, m.get(tmp) + 1);
-						} else {
-							m.put(tmp, 1);
-						}
+			while (sc.hasNext()) {
+				String tmp = sc.next().replaceAll("[^a-zA-Z]+", "");
 
-						if (maxwords < m.get(tmp)) {
-							maxwords = m.get(tmp);
-							maxstring = tmp;
-						}
-
+				if (!tmp.equals("")) {
+					if (m.containsKey(tmp)) {
+						m.put(tmp, m.get(tmp) + 1);
+					} else {
+						m.put(tmp, 1);
 					}
+
+					if (maxwords < m.get(tmp)) {
+						maxwords = m.get(tmp);
+						maxstring = tmp;
+					}
+
 				}
 			}
+
 			System.out.println("Max String is" + maxstring + "maxwords is " + maxwords);
 		}
 
@@ -71,7 +68,7 @@ public class FileCount {
 
 	public static void main(String arg[]) {
 		FileCount s = new FileCount();
-		s.wordcou("C:/Users/hemanth/Desktop/test.txt");
+		s.wordcou("C:/Users/heman/Desktop/test.txt");
 	}
 
 }

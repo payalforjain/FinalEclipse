@@ -73,28 +73,7 @@ public class ArrayBased {
 
 	}
 
-	public static void oddnumberstime(int[] a) {
-		HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
 
-		for (int i = 0; i < a.length; i++) {
-			if (m.containsKey(a[i])) {
-				int v = m.get(a[i]);
-				m.put(a[i], v + 1);
-
-			}
-
-			else {
-				m.put(a[i], 1);
-			}
-		}
-
-		for (Map.Entry<Integer, Integer> d : m.entrySet()) {
-			if (d.getValue() % 2 == 1) {
-				System.out.println(d.getKey() + " = " + d.getValue());
-			}
-		}
-
-	}
 
 	public static void moveZerotoEnd(int[] a) {
 		int start = 0;
@@ -177,38 +156,7 @@ public class ArrayBased {
 	}
 
 
-	// determine the second frequent number in an input array
-
-	public static void secFreqElement() {
-		int array[] = { 12, 12, 12, 13, 14, 133, 155, 166, 134, 123, 123, 1234, 12, 12345 };
-
-		SortedMap<Integer, Integer> sMap = new TreeMap<Integer, Integer>();
-		sMap.put(array[0], 1);
-		int temp;
-		for (int i = 1; i < array.length; i++) {
-
-			if (sMap.get(array[i]) != null) {
-				temp = sMap.get(array[i]);
-				sMap.put(array[i], temp + 1);
-			} else {
-				sMap.put(array[i], 1);
-			}
-			temp = 0;
-		}
-		System.out.println(sMap);
-
-		TreeSet<Integer> treeSet = new TreeSet<Integer>(sMap.values());
-		int sechigh = treeSet.size() - 2;
-		System.out.println(treeSet.toArray()[sechigh]);
-
-		for (Map.Entry<Integer, Integer> entry : sMap.entrySet()) {
-			if (entry.getValue().equals(treeSet.toArray()[sechigh])) {
-				System.out.println("1st higest value is" + entry.getKey());
-			}
-		}
-
-	}
-
+	
 	private static final int MAX_ROW = 4;
 
 	// Diagonal Format
@@ -294,7 +242,7 @@ public class ArrayBased {
 	public static void main(String[] args) {
 
 		int[] d = { 2, 3, 2, 4, 4, 4, 6, 8, 8 };
-		oddnumberstime(d);
+
 
 		int g[] = { 0, 0, 1, 0, 0, 1, 1, 0, 0, 1 };
 

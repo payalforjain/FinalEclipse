@@ -1,9 +1,5 @@
 package leetcode.easy.arrays;
 
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 public class KthLargestElement {
 
 	public int findKthLargest(int[] nums, int k) {
