@@ -52,126 +52,6 @@ public class StringBased {
 
 	}
 
-	public static boolean palindromeUsingStack(String input) {
-		Stack<Character> in = new Stack<Character>();
-
-		String output = "";
-
-		for (int i = 0; i < input.length(); i++) {
-			in.push(input.charAt(i));
-		}
-
-		while (!in.isEmpty()) {
-			output = output + in.pop();
-		}
-
-		if (input.equals(output)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	public static int totalNoOfpalindrome(String input) {
-
-		String out = "";
-		Set<String> s = new HashSet<String>();
-
-		for (int i = 0; i < input.length(); i++) {
-			String temp = input.substring(i);
-
-			out = "";
-			for (int j = 0; j < temp.length(); j++) {
-				out = out + temp.charAt(j);
-
-				if (palindromeUsingStack(out)) {
-					s.add(out);
-				}
-
-			}
-
-		}
-
-		for (String temp : s) {
-			System.out.println(temp);
-		}
-		return s.size();
-
-	}
-
-	/*
-	 * leetcode problem
-	 * 
-	 * Given a string, determine if it is a palindrome, considering only
-	 * alphanumeric characters and ignoring cases.
-	 * 
-	 * For example, "A man, a plan, a canal: Panama" is a palindrome.
-	 */
-
-	public boolean isPalindrome(String s) {
-
-		if (s == null)
-			return false;
-		if (s.length() == 0)
-			return true;
-		s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-
-		return isPalindromeUsingRecursion(s);
-	}
-
-	public static boolean isPalindromeUsingRecursion(String s) { // if length is
-																	// 0 or 1
-																	// then
-																	// String is
-																	// palindrome
-		if (s.length() == 0 || s.length() == 1)
-			return true;
-		if (s.charAt(0) == s.charAt(s.length() - 1))
-			/*
-			 * check for first and last char of String: if they are same then do
-			 * the same thing for a substring with first and last char removed.
-			 * and carry on this until you string completes or condition fails
-			 * Function calling itself: Recursion
-			 */
-			return isPalindromeUsingRecursion(s.substring(1, s.length() - 1));
-
-		/*
-		 * If program control reaches to this statement it means the String is
-		 * not palindrome hence return false.
-		 */
-		return false;
-	}
-
-	public static String largestPalindrome(String input) {
-		String largestPalindrome = "";
-		int largestLength = 0;
-
-		String out = "";
-		Set<String> s = new HashSet<String>();
-
-		for (int i = 0; i < input.length(); i++) {
-			String temp = input.substring(i);
-
-			out = "";
-			for (int j = 0; j < temp.length(); j++) {
-				out = out + temp.charAt(j);
-
-				if (palindromeUsingStack(out)) {
-
-					if (largestLength < out.length()) {
-						largestPalindrome = out;
-						largestLength = largestPalindrome.length();
-					}
-					s.add(out);
-				}
-
-			}
-
-		}
-
-		return largestPalindrome;
-
-	}
 
 	public static void reverseStringUsingStack(String inputString) {
 		if (inputString.isEmpty()) {
@@ -512,14 +392,7 @@ public class StringBased {
 		 * System.out.println(longestSubstringUnrepeatedChar("AABC"));
 		 * 
 		 */
-		System.out.println(largestPalindrome("1234"));
-		System.out.println(largestPalindrome("12321"));
-		System.out.println(largestPalindrome("9912321456"));
-		System.out.println(largestPalindrome("9912333321456"));
-		System.out.println(largestPalindrome("12145445499"));
-		System.out.println(largestPalindrome("1223213"));
-		System.out.println(largestPalindrome("abb"));
-
+		
 	}
 
 }

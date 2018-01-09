@@ -38,50 +38,89 @@ public class LevelOrderTraversal {
 		}
 
 	}
-	
+
 	// return as a list
-	 public List<List<Integer>> levelOrder(TreeNode root) {
-		 
-		 List<List<Integer>> out = new ArrayList<List<Integer>>();
-			Queue<TreeNode> s1 = new LinkedList<TreeNode>();
-			Queue<TreeNode> s2 = new LinkedList<TreeNode>();
-			Queue<TreeNode> temp = new LinkedList<TreeNode>();
-			List<Integer> in = new ArrayList<Integer>();
-			if(root == null)
-			{
-			    return out;
-			}
-		
-			s1.add(root);
-	
-		//	System.out.println("Level Order Traversal");
-			while (!s1.isEmpty()) {
-				TreeNode n = s1.poll();
-				in.add(n.val);
-				//System.out.print(n.getData() + " ");
-				if (n.left != null)
-					s2.add(n.left);
-				if (n.right != null)
-					s2.add(n.right);
+	public List<List<Integer>> levelOrder(TreeNode root) {
 
-				if (s1.isEmpty()) {
-				    out.add(in);
-					 in = new ArrayList<Integer>();
-			
-					temp = s1;
-					s1 = s2;
-					s2 = temp;
+		List<List<Integer>> out = new ArrayList<List<Integer>>();
+		Queue<TreeNode> s1 = new LinkedList<TreeNode>();
+		Queue<TreeNode> s2 = new LinkedList<TreeNode>();
+		Queue<TreeNode> temp = new LinkedList<TreeNode>();
+		List<Integer> in = new ArrayList<Integer>();
+		if (root == null) {
+			return out;
+		}
 
-				}
+		s1.add(root);
+
+		// System.out.println("Level Order Traversal");
+		while (!s1.isEmpty()) {
+			TreeNode n = s1.poll();
+			in.add(n.val);
+			// System.out.print(n.getData() + " ");
+			if (n.left != null)
+				s2.add(n.left);
+			if (n.right != null)
+				s2.add(n.right);
+
+			if (s1.isEmpty()) {
+				out.add(in);
+				in = new ArrayList<Integer>();
+
+				temp = s1;
+				s1 = s2;
+				s2 = temp;
 
 			}
-		 
-		 return out;
-	        
-	    }
-	
-	
-	
-	
+
+		}
+
+		return out;
+
+	}
+
+	public List<List<Integer>> levelOrderBottom(TreeNode root) {
+
+		List<List<Integer>> out = new ArrayList<List<Integer>>();
+		Queue<TreeNode> s1 = new LinkedList<TreeNode>();
+		Queue<TreeNode> s2 = new LinkedList<TreeNode>();
+		Queue<TreeNode> temp = new LinkedList<TreeNode>();
+		List<Integer> in = new ArrayList<Integer>();
+		if (root == null) {
+			return out;
+		}
+
+		s1.add(root);
+
+		// System.out.println("Level Order Traversal");
+		while (!s1.isEmpty()) {
+			TreeNode n = s1.poll();
+			in.add(n.val);
+			// System.out.print(n.getData() + " ");
+			if (n.left != null)
+				s2.add(n.left);
+			if (n.right != null)
+				s2.add(n.right);
+
+			if (s1.isEmpty()) {
+				out.add(in);
+				in = new ArrayList<Integer>();
+
+				temp = s1;
+				s1 = s2;
+				s2 = temp;
+
+			}
+
+		}
+
+		List<List<Integer>> reversedResult = new ArrayList<List<Integer>>();
+
+		for (int i = out.size() - 1; i >= 0; i--) {
+			reversedResult.add(out.get(i));
+		}
+		return reversedResult;
+
+	}
 
 }

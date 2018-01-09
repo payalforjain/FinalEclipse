@@ -1,4 +1,4 @@
-package array;
+package leetcode.easy.stringManipulation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
