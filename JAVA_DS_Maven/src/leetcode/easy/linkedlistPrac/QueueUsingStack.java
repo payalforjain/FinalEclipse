@@ -1,11 +1,5 @@
 package leetcode.easy.linkedlistPrac;
 
-/*
- *  Java Program to Implement Queue using Two Stacks
- */
- 
-import java.util.*;
- 
 /* Class queueUsingStack */
 class queueUsingStack
 {

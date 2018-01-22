@@ -2,14 +2,6 @@ package array;
 
 public class Numbers {
 
-	public static int exponent(int base, int exponent) {
-		int val = 1;
-		for (int i = 0; i < exponent; i++) {
-			val = val * base;
-		}
-
-		return val;
-	}
 
 	public static void concatenateNumbers(long x, long y) {
 		long temp = y;
@@ -433,8 +425,6 @@ public class Numbers {
 
 		// moveAllEvensToLeft(new int[]{1, 4, 3, 4,3, 4, 1, 4, 1, 3, 5, 6});
 
-		System.out.println(exponent(2, 4));
-		System.out.println(exponent(0, 4));
 
 		System.out.println(cal_angle(1, 30));
 		concatenateNumbers(123, 456);

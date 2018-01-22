@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OddNumberTimes {
-	
+
 	public static void oddnumberstime(int[] a) {
 		HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
 

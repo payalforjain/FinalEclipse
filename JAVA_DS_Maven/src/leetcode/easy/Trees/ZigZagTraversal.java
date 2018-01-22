@@ -1,10 +1,9 @@
 package leetcode.easy.Trees;
 
-import java.util.Stack;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 import bst.BSTNode;
 
 public class ZigZagTraversal {

@@ -61,7 +61,7 @@ public class MedianOfTwoArray {
 			return findKth(A, B, k, aStart, aEnd, bStart, bEnd);
 	}
 
-	 // There are two sorted arrays nums1 and nums2 of same sze.
+	// There are two sorted arrays nums1 and nums2 of same sze.
 	public float find(int[] a, int start_a, int end_a, int[] b, int start_b, int end_b) {
 
 		if (end_a - start_a + 1 == 2 && end_b - start_b + 1 == 2) {
