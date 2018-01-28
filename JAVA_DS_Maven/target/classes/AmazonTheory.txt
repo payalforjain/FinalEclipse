@@ -1,0 +1,77 @@
+
+Core Java:
+1)	X==NULL and NULL==x, what is the difference 
+
+No difference>
+2)	What is the difference between C and Java? And which do you prefer? Why?
+http://www.durofy.com/10-major-differences-between-c-and-java/
+3)	What is functional programming?
+4)	Hex to decimal
+5)	What is the difference between an int that is initialized and uninitialized?
+6)	How does a float stored in memory? 
+Sign Bit,Exponent,Mantissa.
+7)	Stack vs  heap in memory
+8)	LRU cache code
+http://www.journaldev.com/4098/java-heap-memory-vs-stack-memory-difference
+9)	difference between c++ and java 
+http://www.dickbaldwin.com/java/Java008.htm
+http://cs-fundamentals.com/tech-interview/java/differences-between-java-and-cpp.php
+
+
+10)	      Tell me about MVC architecture?  
+http://www.codeproject.com/Articles/879896/Programming-in-Java-using-the-MVC-architecture
+
+
+11)	How will you identify references to an object in java api
+12)	Java multithreading, locking, Java design pattern.
+13)	concurrency in java  
+14)	byte manipulation. 
+15)	What is the difference between import java.lang.* and import java.lang.String? 
+16)	How to avoid deadlock? 
+17)	How does the garbage collector know if an object can be collected?   
+18)	ssked something about java memory questions. How to handle out of memory error?  
+19)	 Can you place a set inside a map
+20)	If I mark an arraylist as final, can i add more elements to it?  
+21)	weak hash map
+22)	thread local, java debugger  
+23)	What is the difference between Java and Java Enterprise Edition?
+24)	 how can you instantiate object in more than one way.
+25)	Array Implementation of a Hashmap 2
+26)	 object references and actual objects
+27)	What is a object reference, how is it difference from a physical object?  
+28)	handling concurrent sessions 
+29)	Immutable classes in Java 
+30)	 Memory Management, Web application performance.
+31)	 What if the main method is declared private?
+32)	 What is the difference between == and .equals()
+33)	What design pattern would you use to design connection pooling?
+34)	what is deadlock and also asked for a tool or way to identify dead lock. ( basically the guy had no idea what he is asking for)  
+35)	Are abstract methods faster than the methods of an interface
+36)	How oracle stores the indexes? 
+37)	How to implement a class without instance..? 
+38)	stream classses in java jdbc
+39)	How will you start a project java.util ??
+40)	what is difference between Arraylist a = new Arraylist (); and List a = new Arraylist () ?  
+41)	 How to reverse a tree map:  
+ Map<String, String> treemap = new TreeMap<String, String>(Collections.reverseOrder());
+Write an asynchronous method call in java. 
+How do you declare a Dynamic SQL object in JAVA ?
+complexity of Hashmaps, Linked List and arrays. Implementation of Hashmaps etc
+Compare hash map with binary search tre
+What if there are some boundary cases
+What is difference between int & Integer.
+ situation in Binary Search Trees where duplicates are possible
+1)	Strings a="hello"; b="hello"; c=new String("hello"); d=c; e=new String("hello"); Tell me the result a) a==b b)a.equals(b) c)a==c d)c==d e)c.equals d f) c==e g)c.equals e 3
+
+Unix:
+How to retrieve a file with a specific string or keyword using UNIX command line 
+
+Unix:
+How to retrieve a file with a specific string or keyword using UNIX command line 
+
+OS:
+
+1 ) Implement a cache and write code for it. 
+1)	What is virtual memory? What types of scheduling are you aware of?
+2)	what is os, paging, segmentation, virtual memory, i/o mgmt, deadlocks, synchronization –
+3)	Explain Collaborative Caching

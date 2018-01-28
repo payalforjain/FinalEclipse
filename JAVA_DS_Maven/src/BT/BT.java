@@ -77,49 +77,7 @@ class BT
                 return true;
         return false;         
     }
-    /* Function for inorder traversal */
-    public void inorder()
-    {
-        inorder(root);
-    }
-    private void inorder(BTNode r)
-    {
-        if (r != null)
-        {
-            inorder(r.getLeft());
-            System.out.print(r.getData() +" ");
-            inorder(r.getRight());
-        }
-    }
-    /* Function for preorder traversal */
-    public void preorder()
-    {
-        preorder(root);
-    }
-    private void preorder(BTNode r)
-    {
-        if (r != null)
-        {
-            System.out.print(r.getData() +" ");
-            preorder(r.getLeft());             
-            preorder(r.getRight());
-        }
-    }
-    /* Function for postorder traversal */
-    public void postorder()
-    {
-        postorder(root);
-    }
-    private void postorder(BTNode r)
-    {
-        if (r != null)
-        {
-            postorder(r.getLeft());             
-            postorder(r.getRight());
-            System.out.print(r.getData() +" ");
-        }
-    }     
-
+    
     public static void main(String[] args)
    {            
        Scanner scan = new Scanner(System.in);
@@ -159,11 +117,7 @@ class BT
            }
            /*  Display tree  */ 
            System.out.print("\nPost order : ");
-           bt.postorder();
-           System.out.print("\nPre order : ");
-           bt.preorder();
-           System.out.print("\nIn order : ");
-           bt.inorder();
+   
 
            System.out.println("\n\nDo you want to continue (Type y or n) \n");
            ch = scan.next().charAt(0);                        

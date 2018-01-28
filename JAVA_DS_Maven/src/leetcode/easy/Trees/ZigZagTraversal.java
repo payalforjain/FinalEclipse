@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import bst.BSTNode;
-
 public class ZigZagTraversal {
 	protected BSTNode root;
 

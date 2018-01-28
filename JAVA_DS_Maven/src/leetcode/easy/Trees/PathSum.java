@@ -1,6 +1,5 @@
 package leetcode.easy.Trees;
 
-import bst.BSTNode;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.List;

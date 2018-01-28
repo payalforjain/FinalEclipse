@@ -5,8 +5,6 @@ import java.util.Queue;
 import java.util.List;
 import java.util.ArrayList;
 
-import bst.BSTNode;
-
 public class LevelOrderTraversal {
 	protected BSTNode root;
 

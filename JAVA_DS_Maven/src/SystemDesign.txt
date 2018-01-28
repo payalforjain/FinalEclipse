@@ -1,0 +1,21 @@
+Design a parking garage 
+scalable system design of Amazon.com's order number generation service.  
+check whether a hand of cards was a full house (in Poker) or not.
+Asked to implement the game Fuzz buzz
+one question is to find a path in a maze  
+1)	functions that implement auto prediction feature when user input a few letters in search box.
+2)	Design a cache system  
+3)	 implement Sudoku.
+4)	Implement poker
+5)	game of life game design
+6)	tic tac toe game
+7)	ow would you design a Zoo class using OO design?  
+8)	 design a chess game.
+u implement a service like twitter? 
+•	Design parking lot  1 Answer
+•	Design movie playlist  1 Answer
+
+2)Design telecommunication billing system.
+Design the high level communictions and protocols required for an air traffic control system.  Answer Question
+
+

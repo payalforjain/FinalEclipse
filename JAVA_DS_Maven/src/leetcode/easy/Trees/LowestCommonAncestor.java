@@ -1,7 +1,5 @@
 package leetcode.easy.Trees;
 
-import bst.BSTNode;
-
 public class LowestCommonAncestor {
 	protected BSTNode root;
 
@@ -24,25 +22,29 @@ public class LowestCommonAncestor {
 			return node;
 		}
 	}
-	
-	
-	  public TreeNode lowestCommonAncestor(TreeNode node, TreeNode t1, TreeNode t2) {
-		  
-		  if (node == null)
-				return null;
 
-			if (t1.val < node.val && t2.val < node.val)// both targets are left
-				return lowestCommonAncestor(node.left, t1, t2);
-			else if (t1.val > node.val && t2.val > node.val) // both targets are
-																	// right
-				return lowestCommonAncestor(node.right, t1, t2);
+	BSTNode nonfirstCommonAncestor(int data1, int data2) {
+		return nonfirstCommonAncestor(root, data1, data2);
+	}
+
+	BSTNode nonfirstCommonAncestor(BSTNode node, int data1, int data2) {
+
+		while (node != null) {
+
+			if (data1 > node.getData() && data2 > node.getData()) {
+				node = node.getRight();
+			}
+
+			else if (data1 < node.getData() && data2 < node.getData()) {
+				node = node.getLeft();
+			}
+
 			else {
-
-			
+				System.out.println(node.getData());
 				return node;
 			}
-	        
-	    }
-	    
+		}
+		return node;
+	}
 
 }
