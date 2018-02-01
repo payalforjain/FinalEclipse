@@ -1,4 +1,4 @@
-package leetcode.medium.sorting;
+ package leetcode.medium.sorting;
 
 import java.util.Scanner;
 

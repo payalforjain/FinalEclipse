@@ -18,26 +18,27 @@ All root-to-leaf paths are:
 
 ["1->2->5", "1->3"]
 	 */
-public List<String> binaryTreePaths(TreeNode root) {
-        
-        List<String> paths = new LinkedList<>();
+	public List<String> binaryTreePaths(TreeNode root) {
 
-        if(root == null) return paths;
-        
-        if(root.left == null && root.right == null){
-            paths.add(root.val+"");
-            return paths;
-        }
+		List<String> paths = new LinkedList<>();
 
-         for (String path : binaryTreePaths(root.left)) {
-             paths.add(root.val + "->" + path);
-         }
+		if (root == null)
+			return paths;
 
-         for (String path : binaryTreePaths(root.right)) {
-             paths.add(root.val + "->" + path);
-         }
+		if (root.left == null && root.right == null) {
+			paths.add(root.val + "");
+			return paths;
+		}
 
-         return paths;
-  }
+		for (String path : binaryTreePaths(root.left)) {
+			paths.add(root.val + "->" + path);
+		}
+
+		for (String path : binaryTreePaths(root.right)) {
+			paths.add(root.val + "->" + path);
+		}
+
+		return paths;
+	}
 
 }

@@ -1,9 +1,8 @@
 package leetcode.easy.Trees;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import leetcode.easy.Trees.BSTNode;
 
 public class PathSum {
 

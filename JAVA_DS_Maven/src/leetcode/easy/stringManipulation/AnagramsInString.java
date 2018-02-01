@@ -5,27 +5,24 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AnagramsInString {
-	
-	 public static List<Integer> findAnagrams(String s, String p) {
-		 List<Integer> output = new ArrayList<>();
-		 
-		 if(s==null || p==null || s.length() == 0 || p.length()==0)
-		 {
-			 return output;
-		 }
-		 
-		 int length = p.length();
-		 for(int i=0; i < s.length() - length +1; i++)
-		 {
-			 String temp = s.substring(i,i+length);
-			 if(isAnagram(temp,p))
-			 {
-				 output.add(i);
-			 }
-		 }
-		 return output;
-	    }
-	
+
+	public static List<Integer> findAnagrams(String s, String p) {
+		List<Integer> output = new ArrayList<>();
+
+		if (s == null || p == null || s.length() == 0 || p.length() == 0) {
+			return output;
+		}
+
+		int length = p.length();
+		for (int i = 0; i < s.length() - length + 1; i++) {
+			String temp = s.substring(i, i + length);
+			if (isAnagram(temp, p)) {
+				output.add(i);
+			}
+		}
+		return output;
+	}
+
 	public static boolean isAnagram(String word, String anagram) {
 		if (word.length() != anagram.length()) {
 			return false;
@@ -41,7 +38,6 @@ public class AnagramsInString {
 		}
 		return anagram.isEmpty();
 	}
-	
 
 	/*
 	 * * Another way to check if two Strings are anagram or not in Java * This
@@ -68,13 +64,5 @@ public class AnagramsInString {
 		}
 		return sbSecond.length() == 0 ? true : false;
 	}
-
-	
-	
-	public static void main(String[] args)
-	{
-		System.out.println(findAnagrams("cbaebabacd","abc"));
-	}
-
 
 }
