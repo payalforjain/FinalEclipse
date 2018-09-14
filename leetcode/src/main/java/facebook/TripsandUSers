@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+
+
+select T.Request_at as Day ,round(sum(case when t.Status = 'completed' then 0 else 1 end) / count(*), 2) AS "Cancellation Rate"  from Trips T , Users U 
+where U.Banned ='No' 
+and U.Role ='client' 
+and T.Client_Id  = U.Users_Id 
+and T.Request_at between '2013-10-01' and '2013-10-03'
+group by  T.Request_at
