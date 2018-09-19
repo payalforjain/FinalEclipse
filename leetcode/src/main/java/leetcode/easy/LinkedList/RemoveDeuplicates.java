@@ -1,4 +1,6 @@
-package leetcode.easy.linkedlistPrac;
+package leetcode.easy.LinkedList;
+
+import leetcode.Model.ListNode;
 
 public class RemoveDeuplicates {
 

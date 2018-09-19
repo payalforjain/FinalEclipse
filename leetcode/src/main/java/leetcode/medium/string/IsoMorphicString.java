@@ -2,7 +2,9 @@ package leetcode.medium.string;
 
 import java.util.Arrays;
 
-public class IsoMorphicString {
+public class
+
+IsoMorphicString {
 	/*
 	 * 1) If lengths of str1 and str2 are not same, return false. 2) Do
 	 * following for every character in str1 and str2 a) If this character is

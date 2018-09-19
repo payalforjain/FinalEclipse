@@ -1,4 +1,4 @@
-package leetcode.easy.linkedlistPrac;
+package leetcode.easy.LinkedList;
 import java.util.NoSuchElementException;
 
 public class Deque<Item> 

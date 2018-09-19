@@ -2,7 +2,7 @@ package leetcode.easy.Trees;
 
 import java.util.*;
 
-import leetcode.easy.linkedlistPrac.Queue.Node;
+import leetcode.easy.LinkedList.Queue.Node;
 
 class BST {
 	public BSTNode root;

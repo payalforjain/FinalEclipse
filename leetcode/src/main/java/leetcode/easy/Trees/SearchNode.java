@@ -1,60 +1,51 @@
 package leetcode.easy.Trees;
 
+import leetcode.Model.TreeNode;
+
 public class SearchNode {
 
-	public BSTNode root;
+    public TreeNode searchBST(TreeNode root, int val) {
 
-	public boolean search(int data) {
-		return search(root, data);
-	}
+        if (root== null)
+            return null;
+        else if (root.val == val) {
 
-	public boolean search(BSTNode node, int data) {
+            return root;
+        } else if (root.val > val) {
 
-		if (node == null)
-			return false;
-		else if (node.getData() == data) {
+            return searchBST(root.left, val);
+        }
 
-			return true;
-		} else if (node.getData() > data) {
+        else if (root.val < val) {
 
-			return search(node.getLeft(), data);
-		}
+            return searchBST(root.right , val);
+        }
 
-		else if (node.getData() < data) {
+        return root;
+    }
 
-			return search(node.getRight(), data);
-		}
+    public TreeNode searchBSTIterative(TreeNode root, int val) {
 
-		return true;
+        while(root != null)
+        {
+            if (root.val == val) {
 
-	}
+                return root;
+            } else if (root.val > val) {
 
-	public boolean searchIter(int data) {
-		return searchIter(root, data);
-	}
+                root =  root.left;
+            }
 
-	public boolean searchIter(BSTNode node, int data) {
+            else if (root.val < val) {
 
-		while (node != null) {
+                root = root.right ;
+            }
+        }
 
-			if (node.getData() > data) {
 
-				node = node.getLeft();
-			}
+        return root;
+    }
 
-			else if (node.getData() < data) {
 
-				node = node.getRight();
-			}
-
-			else if (node.getData() == data) {
-
-				return true;
-			}
-		}
-
-		return false;
-
-	}
 
 }

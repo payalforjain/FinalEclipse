@@ -1,4 +1,4 @@
-package leetcode.easy.linkedlistPrac;
+package leetcode.easy.LinkedList;
 
 import java.io.File;
 import java.util.Scanner;

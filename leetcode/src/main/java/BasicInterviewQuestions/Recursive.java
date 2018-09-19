@@ -4,12 +4,6 @@ import java.util.Scanner;
 
 public class Recursive {
 
-	public static int exponentRecursion(int base, int exponent) {
-		if (exponent == 0)
-			return 1;
-		else
-			return exponentRecursion(base, exponent - 1) * base;
-	}
 
 	// Find if a string is the substring of the other recursion
 	public static boolean findrecursive(String text, String target) {

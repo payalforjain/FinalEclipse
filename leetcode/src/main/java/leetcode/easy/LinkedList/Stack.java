@@ -1,8 +1,4 @@
-package leetcode.easy.linkedlistPrac;
-import java.io.File;
-import java.util.NoSuchElementException;
-import java.util.Iterator;
-import java.util.Scanner;
+package leetcode.easy.LinkedList;
 
 
 public class Stack<Item> 

@@ -1,4 +1,4 @@
-package leetcode.easy.linkedlistPrac;
+package leetcode.easy.LinkedList;
 
 /*
  *  Java Program to Implement Stack using Two Queues

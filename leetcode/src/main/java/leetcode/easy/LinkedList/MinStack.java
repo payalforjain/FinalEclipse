@@ -1,6 +1,4 @@
-package leetcode.easy.linkedlistPrac;
-
-import java.util.Stack;
+package leetcode.easy.LinkedList;
 
 class Elem{
     public int value;

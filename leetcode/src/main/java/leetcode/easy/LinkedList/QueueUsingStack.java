@@ -1,4 +1,4 @@
-package leetcode.easy.linkedlistPrac;
+package leetcode.easy.LinkedList;
 
 /* Class queueUsingStack */
 class queueUsingStack

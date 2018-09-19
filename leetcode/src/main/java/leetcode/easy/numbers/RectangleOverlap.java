@@ -1,45 +1,29 @@
 package leetcode.easy.numbers;
 
-class Point {
-	int x, y;
+/*
+A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner.
 
-	public Point(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
+		Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.
 
-}
+		Given two (axis-aligned) rectangles, return whether they overlap.
 
+		Example 1:
+
+		Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]
+		Output: true
+		Example 2:
+
+		Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]
+		Output: false
+		Notes:
+
+		Both rectangles rec1 and rec2 are lists of 4 integers.
+		All coordinates in rectangles will be between -10^9 and 10^9.
+*/
 public class RectangleOverlap {
 
-	// Returns true if two rectangles (l1, r1) and (l2, r2) overlap
-	boolean doOverlap(Point l1, Point r1, Point l2, Point r2) {
-		// If one rectangle is on left side of other
-		if (l1.x > r2.x || l2.x > r1.x)
-			return false;
-
-		// If one rectangle is above other
-		if (l1.y < r2.y || l2.y < r1.y)
-			return false;
-
-		return true;
-	}
-
-	/* Driver program to test above function */
-	public static void main() {
-		Point l1 = new Point(0, 10);
-		Point r1 = new Point(10, 0);
-
-		Point l2 = new Point(5, 5);
-		Point r2 = new Point(15, 0);
-		RectangleOverlap rec = new RectangleOverlap();
-
-		boolean isoverlap = rec.doOverlap(l1, r1, l2, r2);
-
-		if (isoverlap)
-			System.out.println("Rectangles Overlap");
-		else
-			System.out.println("Rectangles Don't Overlap");
-
+	public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+		return (Math.min(rec1[2], rec2[2]) > Math.max(rec1[0], rec2[0]) && // width > 0
+				Math.min(rec1[3], rec2[3]) > Math.max(rec1[1], rec2[1]));  // height > 0
 	}
 }
