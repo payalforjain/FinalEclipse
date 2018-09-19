@@ -1,12 +1,8 @@
 package leetcode.easy.numbers;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class RomanToInteger {
-
-	/*
-	Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+import java.util.*;
+public class IntegerToRoman {
+/*
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
 I             1
@@ -23,53 +19,43 @@ Roman numerals are usually written largest to smallest from left to right. Howev
 I can be placed before V (5) and X (10) to make 4 and 9.
 X can be placed before L (50) and C (100) to make 40 and 90.
 C can be placed before D (500) and M (1000) to make 400 and 900.
-Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
+Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
 
 Example 1:
 
-Input: "III"
-Output: 3
+Input: 3
+Output: "III"
 Example 2:
 
-Input: "IV"
-Output: 4
+Input: 4
+Output: "IV"
 Example 3:
 
-Input: "IX"
-Output: 9
+Input: 9
+Output: "IX"
 Example 4:
 
-Input: "LVIII"
-Output: 58
+Input: 58
+Output: "LVIII"
 Explanation: C = 100, L = 50, XXX = 30 and III = 3.
 Example 5:
 
-Input: "MCMXCIV"
-Output: 1994
+Input: 1994
+Output: "MCMXCIV"
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-	 */
-	public int romanToInt(String s) {
-	    if (s == null || s.length()==0) {
-                return 0;
-	    }
-	    Map<Character, Integer> m = new HashMap<Character, Integer>();
-	    m.put('I', 1);
-	    m.put('V', 5);
-	    m.put('X', 10);
-	    m.put('L', 50);
-	    m.put('C', 100);
-	    m.put('D', 500);
-	    m.put('M', 1000);
+ */
+public String intToRoman(int num) {
+    String[] str = new String[] {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    int[] val = new int[] {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
 
-	    int length = s.length();
-	    int result = m.get(s.charAt(length - 1));
-	    for (int i = length - 2; i >= 0; i--) {
-	        if (m.get(s.charAt(i + 1)) <= m.get(s.charAt(i))) {
-	            result += m.get(s.charAt(i));
-	        } else {
-	            result -= m.get(s.charAt(i));
-	        }
-	    }
-	    return result;
-	}
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i < val.length; i++) {
+        while (num >= val[i]) {
+            num -= val[i];
+            sb.append(str[i]);
+        }
+    }
+    return sb.toString();
+}
 }

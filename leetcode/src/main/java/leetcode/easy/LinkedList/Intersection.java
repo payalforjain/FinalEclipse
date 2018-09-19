@@ -14,7 +14,10 @@ public class Intersection {
 	                     c1 → c2 → c3
 	                   ↗            
 	B:     b1 → b2 → b3*/
-	
+
+	/*
+
+	 */
 	 public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 	        if (headA == null || headB == null) {
 	            return null;

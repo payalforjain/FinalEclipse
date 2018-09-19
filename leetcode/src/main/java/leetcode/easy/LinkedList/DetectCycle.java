@@ -3,7 +3,13 @@ package leetcode.easy.LinkedList;
 import leetcode.Model.ListNode;
 
 public class DetectCycle {
+/*
 
+Given a linked list, determine if it has a cycle in it.
+
+Follow up:
+Can you solve it without using extra space?
+ */
 	public boolean hasCycle(ListNode head) {
 		ListNode fast = head;
 		ListNode slow = head;
@@ -20,15 +26,14 @@ public class DetectCycle {
 	}
 
 	/**
-	 * @param head:
-	 *            The head of linked list.
-	 * @return: You should return the head of the sorted linked list, using
-	 *          constant space complexity. /* iven a linked list, return the
-	 *          node where the cycle begins. If there is no cycle, return null.
-	 * 
-	 *          Note: Do not modify the linked list.
-	 * 
-	 *          Follow up: Can you solve it without using extra space?
+	 Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+	 Note: Do not modify the linked list.
+
+	 Follow up:
+	 Can you solve it without using extra space?
+
+
 	 */
 	 public ListNode detectCycle(ListNode head) {
 	        boolean hasCycle = false;
