@@ -1,5 +1,7 @@
 package leetcode.easy.stringManipulation;
 
+import java.util.Arrays;
+
 public class RotatedString {
 
 	/*
@@ -25,7 +27,7 @@ public class RotatedString {
 			return false;
 		}
 		String sAdd = s1 + s1;
-		if (sAdd.indexOf(s2) > -1)
+		if (sAdd.indexOf(s2) > -1)0.
 			return true;
 
 		return false;

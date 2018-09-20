@@ -14,51 +14,8 @@ import java.util.StringTokenizer;
 
 public class StringBased {
 
-	public static void reverseStringUsingStack(String inputString) {
-		if (inputString.isEmpty()) {
-			System.out.println("Please enter a valid string.");
-		} else if (inputString.length() == 1) {
-			System.out.println(inputString);
-		} else {
-			Stack<Character> stack = new Stack<Character>();
-			String reverseString = "";
-			int counter = 0;
-			while (counter < inputString.length()) {
-				stack.push(inputString.charAt(counter));
-				counter++;
-			}
-			while (!stack.isEmpty()) {
-				reverseString = reverseString + stack.pop();
-			}
-			System.out.println("Original String: " + inputString);
-			System.out.println("Reversed String: " + reverseString);
-		}
-	}
 
-	public static List<String> findDuplicatesUsingSetAdd(List<String> inputStringList) {
-		List<String> output = new ArrayList<String>();
 
-		for (String temp : inputStringList) {
-			if (!output.contains(temp)) {
-				output.add(temp);
-			}
-		}
-		return output;
-	}
-
-	public static List<String> findDuplicatesOrCountUsingFrequency(List<String> inputStringList) {
-		List<String> output = new ArrayList<String>();
-
-		Set<String> s = new HashSet<String>();
-		s.addAll(inputStringList);
-
-		for (String temp : s) {
-			if (!output.contains(temp)) {
-				output.add(temp + Collections.frequency(inputStringList, temp));
-			}
-		}
-		return output;
-	}
 
 	public static void StringToDate() throws ParseException {
 
@@ -83,78 +40,7 @@ public class StringBased {
 		return source;
 	}
 
-	// Given s string, Find max size of a sub-string, in which no duplicate
-	// chars present.
-	public static String longestSubstringUnrepeatedChar(String input) {
-		if (input.length() == 0)
-			return "";
-		if (input.length() == 1)
-			return input;
-		char[] in = input.toCharArray();
-		Set<Character> s = new HashSet<Character>();
-		String out = "";
 
-		String temp = "";
-
-		for (char a : in) {
-
-			if (!s.contains(a)) {
-				s.add(a);
-				out = out + a;
-				if (temp.length() < out.length()) {
-					temp = out;
-
-				}
-
-			}
-
-			else if (s.contains(a)) {
-				out = "";
-				s.clear();
-				// very important critera
-				if (temp.equals("" + a)) {
-					out = out + a;
-				}
-
-			}
-
-		}
-		return temp;
-
-	}
-
-	/**
-	 * Finds common starting string for a list of strings. For e.g. aab and
-	 * aaade have aa in common. Date: 9/13/13 Time: 4:31 PM
-	 */
-
-	public static String commonPrefexinList(List<String> input) {
-		String temp = "";
-		if (input.size() == 0)
-			return "No common prefeix since list is zero";
-		else {
-			for (int i = 0; i < input.size() - 1; i++) {
-				temp = temp + " " + findCommon(input.get(i), input.get(i + 1));
-			}
-		}
-
-		return temp;
-	}
-
-	public static String findCommon(String a, String b) {
-		String out = "";
-		int minLength = Math.min(a.length(), b.length());
-		for (int i = 0; i < minLength; i++) {
-			if (a.charAt(i) == b.charAt(i)) {
-				out = out + a.charAt(i);
-			} else {
-				break;
-			}
-		}
-
-		return out;
-	}
-	// learn this
 
 	public static String findLatest(String string1, String string2) {
 		StringTokenizer stringTokenizer1 = new StringTokenizer(string1, ".");

@@ -36,8 +36,6 @@ public class IndexFirstUniqueCharacter {
             {
                 temp = miter.getKey();
                 break;
-            }
-            
          
             
            

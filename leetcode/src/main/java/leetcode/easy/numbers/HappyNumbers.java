@@ -17,7 +17,7 @@ Example: 19 is a happy number
 12 + 02 + 02 = 1
  */
 public class HappyNumbers {
-	public class Solution {
+
 		public boolean isHappy(int n) {
 			HashSet<Integer> set = new HashSet<Integer>();
 
@@ -41,6 +41,5 @@ public class HappyNumbers {
 			}
 			return sum;
 		}
-	}
 
 }

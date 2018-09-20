@@ -2,7 +2,7 @@ package leetcode.easy.stringManipulation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class AnagramsInString {
 /*
@@ -80,19 +80,8 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 		return anagram.isEmpty();
 	}
 
-	/*
-	 * * Another way to check if two Strings are anagram or not in Java * This
-	 * method assumes that both word and anagram are not null and lowercase
-	 * * @return true, if both Strings are anagram.
-	 *
-	 * // Time Limit Exceeded
-	 */ public static boolean iAnagram(String word, String anagram) {
-		char[] charFromWord = word.toCharArray();
-		char[] charFromAnagram = anagram.toCharArray();
-		Arrays.sort(charFromWord);
-		Arrays.sort(charFromAnagram);
-		return Arrays.equals(charFromWord, charFromAnagram);
-	}
+
+
 //Better Solution
 	public static boolean checkAnagram(String first, String second) {
 		char[] characters = first.toCharArray();
@@ -138,5 +127,51 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 			hash *= PRIMES[s.charAt(i) - 'a'];
 		}
 		return hash;
+	}
+/*
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+ */
+/*
+Analysis
+An anagram is a type of word play, the result of rearranging the letters of a word or phrase to produce a new word or phrase,\
+ using all the original letters exactly once; for example, Torchwood can be rearranged into Doctor Who.
+
+If two strings are anagram to each other, their sorted sequence is the same.
+ */
+	public List<List<String>> groupAnagrams(String[] strs) {
+		List<List<String>> result = new ArrayList<List<String>>();
+
+		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+		for(String str: strs){
+			char[] arr = new char[26];
+			for(int i=0; i<str.length(); i++){
+				arr[str.charAt(i)-'a']++;
+			}
+			String ns = new String(arr);
+
+			if(map.containsKey(ns)){
+				map.get(ns).add(str);
+			}else{
+				ArrayList<String> al = new ArrayList<String>();
+				al.add(str);
+				map.put(ns, al);
+			}
+		}
+
+		result.addAll(map.values());
+
+		return result;
 	}
 }

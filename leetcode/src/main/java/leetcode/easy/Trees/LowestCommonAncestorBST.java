@@ -1,7 +1,7 @@
 package leetcode.easy.Trees;
 
 public class LowestCommonAncestorBST {
-	protected BSTNode root;
+    protected BSTNode root;
 
 	/*
 
@@ -35,59 +35,39 @@ All of the nodes' values will be unique.
 p and q are different and both values will exist in the BST.
 	 */
 
-	public BSTNode findLca(int t1, int t2) {
-		return findLca(root, t1, t2);
-	}
-
-	public BSTNode findLca(BSTNode node, int t1, int t2) {
-		if (node == null)
-			return null;
-
-		if (t1 < node.getData() && t2 < node.getData())// both targets are left
-			return findLca(node.getLeft(), t1, t2);
-		else if (t1 > node.getData() && t2 > node.getData()) // both targets are
-			// right
-			return findLca(node.getRight(), t1, t2);
-		else {
-
-			System.out.println(node.getData());
-			return node;
-		}
-	}
 
 
+//Time Limit Exceeded
+    public TreeNode lowestCommonAncestorIter(TreeNode node, TreeNode t1, TreeNode t2) {
 
-	BSTNode nonfirstCommonAncestorIter(BSTNode node, int data1, int data2) {
+        while (node != null) {
 
-		while (node != null) {
+            if (t1.val > node.val && t2.val > node.val) {
+                node = node.right;
+            } else if (t1.val < node.val && t2.val < node.val) {
+                node = node.left;
+            }
 
-			if (data1 > node.getData() && data2 > node.getData()) {
-				node = node.getRight();
-			} else if (data1 < node.getData() && data2 < node.getData()) {
-				node = node.getLeft();
-			} else {
-				System.out.println(node.getData());
-				return node;
-			}
-		}
-		return node;
-	}
+        }
+        return node;
+    }
 
-	public TreeNode lowestCommonAncestor(TreeNode node, TreeNode t1, TreeNode t2) {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null)
+            return null;
 
-		if (node == null)
-			return null;
+        if(root==p || root==q)
+            return root;
 
-		if (t1.val < node.val && t2.val < node.val)// both targets are left
-			return lowestCommonAncestor(node.left, t1, t2);
-		else if (t1.val > node.val && t2.val > node.val) // both targets are
-			// right
-			return lowestCommonAncestor(node.right, t1, t2);
-		else {
+        TreeNode l = lowestCommonAncestor(root.left, p, q);
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
 
-			return node;
-		}
-
-
-	}
+        if(l!=null&&r!=null){
+            return root;
+        }else if(l==null&&r==null){
+            return null;
+        }else{
+            return l==null?r:l;
+        }
+    }
 }

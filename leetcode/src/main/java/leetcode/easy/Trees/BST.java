@@ -197,18 +197,6 @@ class BST {
 		return maxDepth - minDepth <= 1;
 	}
 
-	/* Function for inorder traversal */
-	public void inorder() {
-		inorder(root);
-	}
-
-	private void inorder(BSTNode r) {
-		if (r != null) {
-			inorder(r.getLeft());
-			System.out.print(r.getData() + " ");
-			inorder(r.getRight());
-		}
-	}
 
 	/* Function for preorder traversal */
 	public void preorder() {
@@ -254,21 +242,7 @@ class BST {
 		}
 	}
 
-	/** Iteratively traverses the binary tree in in-order */
-	public void inorderIter() {
-		BSTNode node = root;
-		Stack<BSTNode> stack = new Stack<BSTNode>();
-		while (!stack.isEmpty() || node != null) {
-			if (node != null) {
-				stack.push(node);
-				node = node.left;
-			} else {
-				node = stack.pop();
-				System.out.print(node.data + " ");
-				node = node.right;
-			}
-		}
-	}
+
 
 	/** Iteratively traverses the binary tree in post-order */
 	public void postorderIter() {
