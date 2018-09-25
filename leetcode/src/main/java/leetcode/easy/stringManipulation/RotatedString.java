@@ -27,7 +27,7 @@ public class RotatedString {
 			return false;
 		}
 		String sAdd = s1 + s1;
-		if (sAdd.indexOf(s2) > -1)0.
+		if (sAdd.indexOf(s2) > -1)
 			return true;
 
 		return false;

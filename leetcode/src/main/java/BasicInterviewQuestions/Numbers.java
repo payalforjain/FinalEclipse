@@ -19,82 +19,7 @@ public class Numbers {
 			System.out.println(n + "*" + c + " = " + (n * c));
 	}
 
-	public static int fibonacci(int number) {
-		if (number == 1 || number == 2) {
-			return 1;
-		}
 
-		return fibonacci(number - 1) + fibonacci(number - 2); // tail recursion
-	}
-
-	/*
-	 * Java program to calculate Fibonacci number using loop or Iteration.
-	 * 
-	 * @return Fibonacci number
-	 */
-	public static int fibonacci2(int number) {
-		if (number == 1 || number == 2) {
-			return 1;
-		}
-		int fibo1 = 1, fibo2 = 1, fibonacci = 1;
-		for (int i = 3; i <= number; i++) {
-
-			// Fibonacci number is sum of previous two Fibonacci number
-			fibonacci = fibo1 + fibo2;
-			fibo1 = fibo2;
-			fibo2 = fibonacci;
-
-		}
-		return fibonacci; // Fibonacci number
-
-	}
-
-	public int countPrimes(int end) {
-		int count = 0;
-		for (int number = 1; number < end; number++) {
-			// print prime numbers only
-			if (isPrimeNumber(number)) {
-				count++;
-				System.out.println("prime no is " + number);
-
-			}
-		}
-		return count;
-	}
-
-	// Leetcode... Better Solution
-	public int countPrimesBetterSolution(int n) {
-		boolean[] isPrime = new boolean[n];
-		for (int i = 2; i < n; i++) {
-			isPrime[i] = true;
-		}
-		// Loop's ending condition is i * i < n instead of i < sqrt(n)
-		// to avoid repeatedly calling an expensive function sqrt().
-		for (int i = 2; i * i < n; i++) {
-			if (!isPrime[i])
-				continue;
-			for (int j = i * i; j < n; j += i) {
-				isPrime[j] = false;
-			}
-		}
-		int count = 0;
-		for (int i = 2; i < n; i++) {
-			if (isPrime[i])
-				count++;
-		}
-		return count;
-	}
-
-	public static boolean isPrimeNumber(int number) { // 1) find if number is
-		// prime or not
-
-		for (int i = 2; i <= number / 2; i++) {
-			if (number % i == 0) {
-				return false;
-			}
-		}
-		return true;
-	}
 
 	// Write a method to convert an integer into a roman numeral string
 
@@ -407,36 +332,5 @@ public class Numbers {
 		 return squareRoot;
 	 }
 
-	 public static void main(String[] args) {
-		 System.out.println(sqrt(10));
-		 // printMultiplicationTable(9);
 
-		 for (int i = 1; i <= 10; i++) {
-			 System.out.print(fibonacci(i) + " ");
-		 }
-		 for (int i = 1; i <= 10; i++) {
-			 System.out.println(fibonacci2(i) + " ");
-		 }
-
-		 int[] arr = { 1, 2, 3, 5 };
-		 System.out.println("Missing number in an array is:" + missingNumber(arr));
-		 System.out.println("String to Int is" + StringToInt("1234"));
-
-		 // moveAllEvensToLeft(new int[]{1, 4, 3, 4,3, 4, 1, 4, 1, 3, 5, 6});
-
-		 System.out.println(cal_angle(1, 30));
-		 concatenateNumbers(123, 456);
-
-		 System.out.println("Is 371 Armstrong number? " + isArmstrongNumber(371));
-		 System.out.println("Is 523 Armstrong number? " + isArmstrongNumber(523));
-		 System.out.println("Is 153 Armstrong number? " + isArmstrongNumber(153));
-
-		 System.out.println("Binary to Decimal " + binaryToDecimal(101));
-
-		 System.out.println("Is 1000111 binary? :" + isBinaryNumber(1000111));
-		 System.out.println("Is 10300111 binary? :" + isBinaryNumber(10300111));
-
-		 System.out.println(multiply(-2, 0));
-
-	 }
 }
