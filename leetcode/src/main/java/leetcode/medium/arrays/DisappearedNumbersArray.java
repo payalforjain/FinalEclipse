@@ -21,13 +21,29 @@ Output:
  */
 public class DisappearedNumbersArray {
 	public List<Integer> findDisappearedNumbers(int[] nums) {
-		List<Integer> res = new ArrayList<>();
-		int n = nums.length;
-		for (int i = 0; i < nums.length; i++)
-			nums[(nums[i] - 1) % n] += n;
-		for (int i = 0; i < nums.length; i++)
-			if (nums[i] <= n)
-				res.add(i + 1);
-		return res;
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+
+		for (int i = 0; i < nums.length; i++){
+			int value = Math.abs(nums[i])-1;
+			if (nums[value] > 0){
+				nums[value] = -nums[value];
+			}
+		}
+
+		for (int i = 0; i < nums.length; i++){
+			if (nums[i] > 0){
+				ret.add(i+1);
+			}
+		}
+
+		return ret;
+	}
+
+
+	public static void main(String[] args)
+	{
+		DisappearedNumbersArray d = new DisappearedNumbersArray();
+		int[] num = {4,3,2,7,8,2,3,1};
+		d.findDisappearedNumbers(num);
 	}
 }

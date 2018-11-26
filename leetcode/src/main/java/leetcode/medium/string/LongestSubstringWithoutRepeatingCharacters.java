@@ -1,5 +1,7 @@
 package leetcode.medium.string;
 
+import java.util.HashSet;
+
 public class LongestSubstringWithoutRepeatingCharacters {
 /*
 Given a string, find the length of the longest substring without repeating characters.

@@ -3,9 +3,9 @@ package leetcode.easy.stringManipulation;
 import java.util.HashSet;
 import java.util.Set;
 
-public class FirstNonRepeatedCharacter {
+public class FirstRepeatedCharacter {
 	
-	public static char findFirstNonRepeatedChar(String inputString) {
+	public static char findFirstRepeatedChar(String inputString) {
 
 		Set<Character> repeatedCharSet = new HashSet<Character>();
 		char out = '\0';

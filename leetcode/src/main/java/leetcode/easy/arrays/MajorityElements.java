@@ -11,6 +11,8 @@ public class MajorityElements {
 	You may assume that the array is non-empty and the majority element always exist in the array.
 	
 	*/
+
+	// better colutuon there check leetcode
 	
 	 public int majorityElement(int[] nums) {
 		  if(nums.length ==0 || nums == null)

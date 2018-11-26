@@ -1,7 +1,7 @@
 package leetcode.easy.Trees;
 
 import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTreePath {
 	/*
@@ -19,26 +19,39 @@ All root-to-leaf paths are:
 ["1->2->5", "1->3"]
 	 */
 	public List<String> binaryTreePaths(TreeNode root) {
-
-		List<String> paths = new LinkedList<>();
-
-		if (root == null)
+		List<String> paths = new ArrayList<>();
+		if( root == null)
 			return paths;
-
-		if (root.left == null && root.right == null) {
-			paths.add(root.val + "");
-			return paths;
-		}
-
-		for (String path : binaryTreePaths(root.left)) {
-			paths.add(root.val + "->" + path);
-		}
-
-		for (String path : binaryTreePaths(root.right)) {
-			paths.add(root.val + "->" + path);
-		}
-
+		String sb = "";
+		dfs(root, paths,sb);
 		return paths;
+	}
+
+	private void dfs(TreeNode root ,  List<String> paths , String sb )
+	{
+
+		if(root == null)
+			return ;
+		sb = sb + "->"+ root.val;
+		if(root.left == null && root.right == null)
+		{
+			paths.add(sb.substring(2));
+			sb = "";
+		}
+
+
+
+		if(root.left != null)
+		{
+			dfs(root.left, paths, sb);
+		}
+
+
+		if(root.right != null)
+		{
+			dfs(root.right, paths,sb);
+		}
+
 	}
 
 }

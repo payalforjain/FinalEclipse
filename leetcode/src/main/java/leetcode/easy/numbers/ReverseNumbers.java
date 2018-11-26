@@ -8,31 +8,47 @@ import java.util.Scanner;
  * Paul
  */
 public class ReverseNumbers {
-	
-	// this wont work for few test cases
-	public static int reverseInteger(int number) {
-		boolean isNegative = number < 0 ? true : false;
-		if (isNegative) {
-			number = number * -1;
-		}
-		int reverse = 0;
-		int lastDigit = 0;
-		while (number >= 1) {
-			lastDigit = number % 10; // gives you last digit
-			reverse = reverse * 10 + lastDigit;
-			number = number / 10;
-		}
-		return isNegative == true ? reverse * -1 : reverse;
-	}
-	public static void main(String args[]) {
-		int input = 5678;
-		int output = reverseInteger(5678);
-		System.out.println("Input : " + input + " Output : " + output);
-	}
 
-	/*
-	 * * Java method to reverse an integer value. there are couple of corner
-	 * cases * which this method doesn't handle e.g. integer overflow.
-	 */
+/*
+Reversing an integer can be done similarly to reversing a string.
 
+We want to repeatedly "pop" the last digit off of xx and "push" it to the back of the \text{rev}rev. In the end, \text{rev}rev will be the reverse of the xx.
+
+To "pop" and "push" digits without the help of some auxiliary stack/array, we can use math.
+
+//pop operation:
+pop = x % 10;
+x /= 10;
+
+//push operation:
+temp = rev * 10 + pop;
+rev = temp;
+
+/*
+Reversing an integer can be done similarly to reversing a string.
+
+We want to repeatedly "pop" the last digit off of xx and "push" it to the back of the \text{rev}rev. In the end, \text{rev}rev will be the reverse of the xx.
+
+To "pop" and "push" digits without the help of some auxiliary stack/array, we can use math.
+
+//pop operation:
+pop = x % 10;
+x /= 10;
+
+//push operation:
+temp = rev * 10 + pop;
+rev = temp;
+ */
+
+	public int reverse(int x) {
+		int rev = 0;
+		while (x != 0) {
+			int pop = x % 10;
+			x /= 10;
+			if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
+			if (rev < Integer.MIN_VALUE/10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
+			rev = rev * 10 + pop;
+		}
+		return rev;
+	}
 }

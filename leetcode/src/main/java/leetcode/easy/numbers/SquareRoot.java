@@ -9,6 +9,7 @@ public class SquareRoot {
 	 * x is guaranteed to be a non-negative integer.
 	 * Othere solution gives time exceeded 
 	 */
+	//// Running time: 47 ms  Binary Search time complexty o(logx)
 	public int mySqrt(int x) {
 
 		if (x <= 1)
@@ -25,4 +26,13 @@ public class SquareRoot {
 		}
 		return end;
 	}
+
+//Running time: 44 ms New ton Method. see google for newton method calcaulation
+	//time complexty o(logx)
+		public int mySqrtNewTon(int a) {
+			long x = a;
+			while (x * x > a)
+				x = (x + a / x) / 2;
+			return (int)x;
+		}
 }
