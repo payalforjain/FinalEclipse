@@ -307,30 +307,42 @@ public class Numbers {
 		 }
 	 }
 
-	 // http://javagtu.blogspot.com/2014/07/calculate-angle-between-hour-hand-and.html
-	 public static int cal_angle(int hour, int min) {
-		 int h_angle = (int) ((hour * 60 + min) * 0.5);
-		 int angle = (min * 6) - h_angle;
-		 // now calculate minimum angle...
+/*
+1) Calculate the angle made by hour hand with respect to 12:00 in h hours and m minutes.
+			2) Calculate the angle made by minute hand with respect to 12:00 in h hours and m minutes.
+			3) The difference between two angles is the angle between two hands.
+*/
+static int calcAngle(double h, double m)
+{
+	// validate the input
+	if (h <0 || m < 0 || h >12 || m > 60)
+		System.out.println("Wrong input");
 
-		 if (angle < 0)
-			 angle = -angle;
-		 return Math.min(360 - angle, angle);
+	if (h == 12)
+		h = 0;
+	if (m == 60)
+		m = 0;
 
-	 }
+	// Calculate the angles moved by hour and minute hands
+	// with reference to 12:00
+	int hour_angle = (int)(0.5 * (h*60 + m));
+	int minute_angle = (int)(6*m);
 
-	 public static double sqrt(int number) { // http://www.programcreek.com/2012/02/java-calculate-square-root-without-using-library-method/
-		 double t;
+	// Find the difference between two angles
+	int angle = Math.abs(hour_angle - minute_angle);
 
-		 double squareRoot = number / 2;
+	// smaller angle of two possible angles
+	angle = Math.min(360-angle, angle);
 
-		 do {
-			 t = squareRoot;
-			 squareRoot = (t + (number / t)) / 2;
-		 } while ((t - squareRoot) != 0);
+	return angle;
+}
 
-		 return squareRoot;
-	 }
+	// Driver program
+	public static void main (String[] args)
+	{
+		System.out.println(calcAngle(9, 60)+" degree");
+		System.out.println(calcAngle(3, 30)+" degree");
+	}
 
 
 }
