@@ -2,99 +2,43 @@ package leetcode.medium.Trees;
 
 //Java program to find diameter of a 
 //binary tree using DFS.
+import leetcode.Model.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 public class DiameterOfTree {
+/*
+Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 
- // Used to track farthest node.
- static int x;
- static int maxCount;
- static List<Integer> adj[];
-  
- // Sets maxCount as maximum distance 
- // from node
- static void dfsUtil(int node, int count, 
-                      boolean visited[],
-                    List<Integer> adj[])
- {
-     visited[node] = true;
-     count++;
-      
-     List<Integer> l = adj[node];
-     for(Integer i: l)
-     {
-         if(!visited[i]){
-             if (count >= maxCount) {
-                 maxCount = count;
-                 x = i;
-             }
-             dfsUtil(i, count, visited, adj);
-         }
-     }
- }
-   
- // The function to do DFS traversal. It uses 
- // recursive dfsUtil()
- static void dfs(int node, int n, List<Integer>
-                                    adj[])
- {
-     boolean[] visited = new boolean[n + 1];
-     int count = 0;
-   
-     // Mark all the vertices as not visited
-     Arrays.fill(visited, false);
-   
-     // Increment count by 1 for visited node
-     dfsUtil(node, count + 1, visited, adj);
-      
- }
-   
- // Returns diameter of binary tree represented
- // as adjacency list.
- static int diameter(List<Integer> adj[], int n)
- {
-     maxCount = Integer.MIN_VALUE;
-   
-     /* DFS from a random node and then see
-     farthest node X from it*/
-     dfs(1, n, adj);
-   
-     /* DFS from X and check the farthest node
-     from it */
-     dfs(x, n, adj);
-   
-     return maxCount;
- }
-   
- /* Driver program to test above functions*/
- public static void main(String args[])
- {
-     int n = 5;
-   
-     /* Constructed tree is
+Example:
+Given a binary tree
           1
          / \
-         2    3
-        / \
-       4   5 */
-     adj = new List[n + 1];
-     for(int i = 0; i < n+1 ; i++)
-         adj[i] = new ArrayList<Integer>(); 
-   
-     /*create undirected edges */
-     adj[1].add(2);
-     adj[2].add(1);
-     adj[1].add(3);
-     adj[3].add(1);
-     adj[2].add(4);
-     adj[4].add(2);
-     adj[2].add(5);
-     adj[5].add(2);
-      
-     /* maxCount will have diameter of tree */
-     System.out.println("Diameter of the given " +
-                    "tree is " + diameter(adj, n));
- }
+        2   3
+       / \
+      4   5
+Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Note: The length of path between two nodes is represented by the number of edges between them.
+ */
+    int ans;
+    public int diameterOfBinaryTree(TreeNode root) {
+        ans = 1;
+        depth(root);
+        return ans - 1;
+    }
+    public int depth(TreeNode node) {
+        if (node == null) return 0;
+        int L = depth(node.left);
+        int R = depth(node.right);
+        ans = Math.max(ans, L+R+1);
+        return Math.max(L, R) + 1;
+    }
+
+    /*
+    Time Complexity: O(N)O(N). We visit every node once.
+
+Space Complexity: O(N)O(N), the size of our implicit call stack during our depth-first search.
+     */
 }
-//This code is contributed by Sumit Ghosh
