@@ -1,5 +1,7 @@
 package leetcode.easy.arrays;
 
+import java.util.PriorityQueue;
+
 public class KthLargestElement {
 
     /*
@@ -64,6 +66,22 @@ Heap Sort, etc and return the element at index k-1 in the sorted array. Time Com
             if (a[i] < a[i - 1])
                 return false;
         return true;
+    }
+
+    /*
+     O(nlog(k)). Space complexity is O(k) for storing the top k numbers.
+     */
+    public int findKthLargestPriorityQueue(int[] nums, int k) {
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
+        for(int i: nums){
+            q.offer(i);
+
+            if(q.size()>k){
+                q.poll();
+            }
+        }
+
+        return q.peek();
     }
 
     // generate N real numbers between 0 and 1, and mergesort them

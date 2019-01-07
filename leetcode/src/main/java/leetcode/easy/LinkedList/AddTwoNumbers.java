@@ -39,8 +39,8 @@ public class AddTwoNumbers {
 			carry /= 10;
 		}
 
-		if (carry == 1)
-			p3.next = new ListNode(1);
+		if (carry !=0)
+			p3.next = new ListNode(carry);
 
 		return newHead.next;
 	}

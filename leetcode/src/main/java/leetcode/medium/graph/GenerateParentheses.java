@@ -27,4 +27,11 @@ public class GenerateParentheses {
         if (right>0)
             dfs(res,item+')',left,right-1);
     }
+
+
+    public static void main(String[] args)
+    {
+        GenerateParentheses g = new GenerateParentheses();
+       System.out.println( g.generateParenthesis(2));
+    }
 }

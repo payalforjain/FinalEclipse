@@ -20,26 +20,20 @@ Every cost[i] will be an integer in the range [0, 999].
  */
     public int minCostClimbingStairs(int[] cost) {
 
-        int n=cost.length;
-        // declare an array
-        int[] dp = new int[n];
-
-        // base case
-        if (n == 1)
-            return cost[0];
-
-        // initially to climb till 0-th
-        // or 1th stair
-        dp[0] = cost[0];
-        dp[1] = cost[1];
-
-        // iterate for finding the cost
-        for (int i = 2; i < n; i++) {
-            dp[i] = Math.min(dp[i - 1], dp[i - 2]) + cost[i];
+        int a = 0, b = 0;
+        for (int num : cost) {
+            int t = Math.min(a, b) + num;
+            a = b;
+            b = t;
         }
+        return Math.min(a, b);
 
-        // return the minimum
-        return Math.min(dp[n - 2], dp[n - 1]);
+    }
 
+    public static void main(String[] args)
+    {
+        MinCostClimbingStairs m = new MinCostClimbingStairs();
+        int[] nums = {10, 15, 20};
+        m.minCostClimbingStairs(nums);
     }
 }

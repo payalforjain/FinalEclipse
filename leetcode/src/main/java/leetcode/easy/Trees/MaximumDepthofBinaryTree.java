@@ -61,14 +61,22 @@ return its depth = 3.
     }
 
     public int maxDepth(TreeNode root) {
-        if(root==null)
+        if (root == null) {
             return 0;
+        }
 
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
+        if ((root.left == null) && (root.right == null)) {
+            return 1;
+        }
 
-        int bigger = Math.max(leftDepth, rightDepth);
+        int max_depth = Integer.MIN_VALUE;
+        if (root.left != null) {
+            max_depth = Math.max(maxDepth(root.left), max_depth);
+        }
+        if (root.right != null) {
+            max_depth = Math.max(maxDepth(root.right), max_depth);
+        }
 
-        return bigger+1;
+        return max_depth + 1;
     }
 }

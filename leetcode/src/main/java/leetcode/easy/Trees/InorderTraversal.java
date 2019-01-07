@@ -21,34 +21,35 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
     public ArrayList<Integer> inorderTraversalIter(TreeNode root) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        ArrayList<Integer> lst = new ArrayList<Integer>();
-
+        ArrayList<Integer>  result = new ArrayList<>();
         if(root == null)
-            return lst;
+        {
+            return result ;
+        }
 
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        //define a pointer to track nodes
-        TreeNode p = root;
 
-        while(!stack.empty() || p != null){
+        Stack<TreeNode> s = new Stack();
 
-            // if it is not null, push to stack
-            //and go down the tree to left
-            if(p != null){
-                stack.push(p);
-                p = p.left;
+        while(!s.isEmpty() || root!= null)
+        {
 
-                // if no left child
-                // pop stack, process the node
-                // then let p point to the right
-            }else{
-                TreeNode t = stack.pop();
-                lst.add(t.val);
-                p = t.right;
+            if(root != null)
+            {
+                s.push(root);
+                root = root.left;
+            }
+
+            else
+            {
+                root = s.pop();
+                result.add(root.val);
+                root = root.right;
             }
         }
 
-        return lst;
+        return result;
+
+
     }
 
     List<Integer> result = new ArrayList<Integer>();

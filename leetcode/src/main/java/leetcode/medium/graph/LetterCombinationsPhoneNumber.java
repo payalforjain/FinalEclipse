@@ -18,27 +18,33 @@ public class LetterCombinationsPhoneNumber {
 	 * "cd", "ce", "cf"].
 	 */
 
-	public List<String> letterCombinations(String digits) {
-		if (digits == null || digits.isEmpty()) {
+	public List<String> letterCombinations(String inputDigit) {
+		if (inputDigit == null || inputDigit.isEmpty()) {
 			return new ArrayList<String>();
 		}
-		String[] dic = { " ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-		ArrayList<String> ret = new ArrayList<String>();
-		StringBuilder temp = new StringBuilder();
-		dfs(digits, dic, 0, temp, ret);
-		return ret;
+		String[] dictionary = { " ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+		ArrayList<String> result = new ArrayList<String>();
+		StringBuilder tempString = new StringBuilder();
+		dfs(inputDigit, dictionary, 0, tempString, result);
+		return result;
 	}
 
-	public void dfs(String digits, String[] dic, int deep, StringBuilder temp, ArrayList<String> ret) {
-		if (deep == digits.length()) {
-			ret.add(temp.toString());
+	public void dfs(String inputDigits, String[] dictionary, int deep, StringBuilder tempString, ArrayList<String> result) {
+		if (deep == inputDigits.length()) {
+			result.add(tempString.toString());
 			return;
 		} else {
-			for (int i = 0; i < dic[digits.charAt(deep) - '0'].length(); i++) {
-				temp.append(dic[digits.charAt(deep) - '0'].charAt(i));
-				dfs(digits, dic, deep + 1, temp, ret);
-				temp.deleteCharAt(temp.length() - 1);
+			for (int i = 0; i < dictionary[inputDigits.charAt(deep) - '0'].length(); i++) {
+				tempString.append(dictionary[inputDigits.charAt(deep) - '0'].charAt(i));
+				dfs(inputDigits, dictionary, deep + 1, tempString, result);
+				tempString.deleteCharAt(tempString.length() - 1);
 			}
 		}
+	}
+
+	public static void main(String[] args)
+	{
+		LetterCombinationsPhoneNumber l =new LetterCombinationsPhoneNumber();
+		l.letterCombinations("23");
 	}
 }

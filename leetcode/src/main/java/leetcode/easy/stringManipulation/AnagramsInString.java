@@ -174,4 +174,49 @@ If two strings are anagram to each other, their sorted sequence is the same.
 
 		return result;
 	}
+
+	public List<List<String>> groupAnagramsChar(String[] strs) {
+		List<List<String>> result = new ArrayList<List<String>>();
+		Map<String, List<String>> map = new HashMap<>();
+		for(String str : strs)
+		{
+			char[] ch = new char[26];
+			for(char c : str.toCharArray() )
+			{
+				ch[c-'a']++;
+			}
+
+			String key = new String(ch);
+
+			if(map.containsKey(key))
+				map.get(key).add(str);
+			else
+			{
+				List<String> temp = new ArrayList();
+				temp.add(str);
+				map.put(key, temp );
+			}
+
+		}
+		result.addAll(map.values());
+		return result;
+	}
+
+	public void anagram(String a , String b) {
+		a = a.toLowerCase();
+		b=  b.toLowerCase();
+
+		if (a.length() != b.length())
+			System.out.println("Not Anagram");
+		int[] table = new int[26];
+		for (char c : a.toCharArray()) {
+			table[c - 'a']++;
+		}
+		for (char c : b.toCharArray()) {
+			table[c - 'a']--;
+			if (table[c - 'a'] < 0)
+				System.out.println("Not Anagram");
+		}
+		System.out.println("Anagram");
+	}
 }

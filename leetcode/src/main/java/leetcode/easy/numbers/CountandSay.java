@@ -56,4 +56,10 @@ Output: "1211"
 
         return result;
     }
+
+    public static void main(String[] args)
+    {
+        CountandSay c = new CountandSay();
+        c.countAndSay(21);
+    }
 }

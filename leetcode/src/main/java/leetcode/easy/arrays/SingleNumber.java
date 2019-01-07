@@ -1,29 +1,31 @@
 package leetcode.easy.arrays;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
-public class SingleNumer {
+public class SingleNumber {
 	//Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 	//Given an array of integers, every element appears twice except for one. Find that single one.
-	public int singleNumber(int[] nums) {
-		 
-        Set<Integer> s = new HashSet<Integer>();
-        for(int i = 0 ; i<nums.length; i++)
+    public int singleNumber(int[] nums) {
+
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums)
         {
-            if(s.contains(nums[i]))
+            if(set.contains(num))
             {
-                s.remove(nums[i]);
+                set.remove(num);
             }
+
             else
             {
-               s.add(nums[i]);
-            }   
+                set.add(num);
+            }
         }
-        
-        
-        return s.toArray(new Integer[s.size()])[0];
-        
+
+
+        Iterator<Integer> it = set.iterator();
+        return it.next();
     }
 
 }

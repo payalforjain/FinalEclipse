@@ -22,19 +22,22 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
 Note: The length of path between two nodes is represented by the number of edges between them.
  */
-    int ans;
+private int max = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        ans = 1;
-        depth(root);
-        return ans - 1;
+        maxDepth(root);
+        return max;
     }
-    public int depth(TreeNode node) {
-        if (node == null) return 0;
-        int L = depth(node.left);
-        int R = depth(node.right);
-        ans = Math.max(ans, L+R+1);
-        return Math.max(L, R) + 1;
+    public int maxDepth(TreeNode root){
+        if(root == null)
+            return 0;
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        max = Math.max(max, left + right);
+        return  1 + Math.max(left, right);
+
     }
+
+    //Time O(N) Space O(N)
 
     /*
     Time Complexity: O(N)O(N). We visit every node once.

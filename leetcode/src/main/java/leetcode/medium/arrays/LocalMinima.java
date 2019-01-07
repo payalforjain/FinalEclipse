@@ -5,11 +5,11 @@ public class LocalMinima {
 	 * Input: arr[] = {9, 6, 3, 14, 5, 7, 4}; Output: Index of local minima is 2
 	 * The output prints index of 3 because it is smaller than both of its
 	 * neighbors. Note that indexes of elements 5 and 4 are also valid outputs.
-	 * 
+	 *
 	 * Input: arr[] = {23, 8, 15, 2, 3}; Output: Index of local minima is 1
-	 * 
+	 *
 	 * Input: arr[] = {1, 2, 3}; Output: Index of local minima is 0
-	 * 
+	 *
 	 * Input: arr[] = {3, 2, 1}; Output: Index of local minima is 2
 	 */
 

@@ -30,42 +30,29 @@ minStack.getMin();   --> Returns -2.
  */
  
 public class MinStack {
-    public Elem top;
- 
-    /** initialize your data structure here. */
-    public MinStack() {
- 
-    }
- 
+
+    private Stack<Integer> minStack = new Stack<>();
+    private Stack<Integer> stack = new Stack<>();
+
     public void push(int x) {
-        if(top == null){
-            top = new Elem(x, x);
-        }else{
-            Elem e = new Elem(x, Math.min(x,top.min));
-            e.next = top;
-            top = e;
+        stack.push(x);
+        if (minStack.isEmpty() || x <= minStack.peek()) {
+            minStack.push(x);
         }
- 
     }
- 
+
     public void pop() {
-        if(top == null)
-            return;
-        Elem temp = top.next;
-        top.next = null;
-        top = temp;
- 
+        int x = stack.pop();
+        if (x == minStack.peek()) {
+            minStack.pop();
+        }
     }
- 
+
     public int top() {
-        if(top == null)
-            return -1;
-        return top.value;
+        return stack.peek();
     }
- 
+
     public int getMin() {
-        if(top == null)
-            return -1;
-        return top.min;
+        return minStack.peek();
     }
 }

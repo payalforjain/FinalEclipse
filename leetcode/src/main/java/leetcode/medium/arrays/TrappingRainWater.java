@@ -50,4 +50,11 @@ Output: 6
     Time complexity: O(n)O(n). Single iteration of O(n)O(n).
 Space complexity: O(1)O(1) extra space. Only constant space required for \text{left}left, \text{right}right, \text{left_max} and \text{right_max}.
      */
+
+
+    public static void  main(String[] args)
+    {
+        TrappingRainWater n = new TrappingRainWater();
+        n.trap(new int[]  {0,1,0,2,1,0,1,3,2,1,2,1});
+    }
 }

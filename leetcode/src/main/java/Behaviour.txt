@@ -4,12 +4,15 @@
 4. Why Amazon?
 5. How can you translate your skills towards Amazon?
 6. What experiences do you have that separate you from the rest?
-•	Tell us about a recent project you've worked on that excited you. What was your role? What did you find challenging about it? Most importantly, why was it exciting? 
-•	did you pick Software Engineering as a Career?   
-•	What has been the biggest challenge you’ve had to overcome in either your career or schooling? What did you take away from this experience?  
-•	 what is your strength? 
-•	 what is your weakness? 
-•	what's your hobby? 
-•	what do you think is the most challenge part in XX project? 5. what do you want to get from the internship? 
-•	how will you find out a bug in the program  
-•	tell me about a time you failed, what did you learn?" "tell me about your most difficult success, what techniques did you use to succeed?" "tell me about a time you had an interpersonal problem, how did you resolve it?"
+ï¿½	Tell us about a recent project you've worked on that excited you. What was your role?
+ What did you find challenging about it? Most importantly, why was it exciting?
+ï¿½	did you pick Software Engineering as a Career?   
+ï¿½	What has been the biggest challenge youï¿½ve had to overcome in either your career or schooling? What did you take away from this experience?  
+ï¿½	 what is your strength? 
+ï¿½	 what is your weakness? 
+ï¿½	what's your hobby? 
+ï¿½	what do you think is the most challenge part in XX project? 5. what do you want to get from the internship? 
+ï¿½	how will you find out a bug in the program  
+ï¿½	tell me about a time you failed, what did you learn?" "tell me about your most difficult success,
+ what techniques did you use to succeed?"
+ "tell me about a time you had an interpersonal problem, how did you resolve it?"

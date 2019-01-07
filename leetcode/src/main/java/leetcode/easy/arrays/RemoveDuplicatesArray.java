@@ -28,12 +28,18 @@ public class RemoveDuplicatesArray {
 
 	Internally you can think of this:
 	*/
+
+
 	public int removeDuplicates(int[] nums) {
-	    int i = 0;
-	    for (int n : nums)
-	        if (i == 0 || n > nums[i-1])
-	            nums[i++] = n;
-	    return i;
+		if (nums.length == 0) return 0;
+		int i = 0;
+		for (int j = 1; j < nums.length; j++) {
+			if (nums[j] != nums[i]) {
+				i++;
+				nums[i] = nums[j];
+			}
+		}
+		return i + 1;
 	}
 	/*
 	Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.

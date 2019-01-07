@@ -35,34 +35,30 @@ Can you solve it without using extra space?
 
 
 	 */
-	 public ListNode detectCycle(ListNode head) {
-	        boolean hasCycle = false;
-	        if (head == null || head.next == null) {
-	            return null;
-	        }
-	        ListNode fast = head.next.next;
-	        ListNode slow = head.next;
-	        while (fast != null && slow != null) {
-	            if (fast.next == null) {
-	                hasCycle = false;
-	                break;
-	            }
-	            if (fast == slow) {
-	                hasCycle = true;
-	                break;
-	            }
-	            fast = fast.next.next;
-	            slow = slow.next;
-	        }
-	        if (!hasCycle) {
-	            return null;
-	        }
-	        slow = head;
-	        while (slow != fast) {
-	            slow = slow.next;
-	            fast = fast.next;
-	        }
-	        return slow;
-	    }
+	public ListNode detectCycle(ListNode head) {
+		boolean hasCycle = false;
+		ListNode fast = head;
+		ListNode slow = head;
 
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+
+			if (slow == fast)
+			{
+				hasCycle = true;
+				break;
+			}
+
+		}
+		if (!hasCycle) {
+			return null;
+		}
+		slow = head;
+		while (slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		return slow;
+	}
 }

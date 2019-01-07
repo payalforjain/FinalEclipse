@@ -12,31 +12,25 @@ Example:
 Input: 1->2->4, 1->3->4
 Output: 1->1->2->3->4->4
 	 */
-	 public ListNode mergeTwoListsIter(ListNode l1, ListNode l2) {
-			 ListNode head = new ListNode(0);
-			 ListNode p = head;
+	public ListNode mergeTwoListsIter(ListNode l1, ListNode l2) {
 
-			 while (l1 != null || l2 != null) {
-				 if (l1 != null && l2 != null) {
-					 if (l1.val < l2.val) {
-						 p.next = l1;
-						 l1 = l1.next;
-					 } else {
-						 p.next = l2;
-						 l2 = l2.next;
-					 }
-					 p = p.next;
-				 } else if (l1 == null) {
-					 p.next = l2;
-					 break;
-				 } else if (l2 == null) {
-					 p.next = l1;
-					 break;
-				 }
-			 }
 
-			 return head.next;
-		 }
+		ListNode dummy = new ListNode(-1);
+		ListNode cur = dummy;
+		while (l1 != null && l2 != null) {
+			if (l1.val < l2.val) {
+				cur.next = l1;
+				l1 = l1.next;
+			} else {
+				cur.next = l2;
+				l2 = l2.next;
+			}
+			cur = cur.next;
+		}
+		if (l1 != null) cur.next = l1;
+		if (l2 != null) cur.next = l2;
+		return dummy.next;
+	}
 	public ListNode mergeTwoLists(ListNode a, ListNode b) {
 
 

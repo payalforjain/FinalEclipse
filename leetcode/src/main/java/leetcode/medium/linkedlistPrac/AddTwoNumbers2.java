@@ -18,43 +18,81 @@ Example:
 Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 8 -> 0 -> 7
  */
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+public ListNode addLists2(ListNode l1, ListNode l2) {
+	l1 = reverse(l1);
+	l2 = reverse(l2);
 
-		HashMap<Integer, Integer> hm1 = new HashMap<>(); //Store the 'index' and the value of List1
-		HashMap<Integer, Integer> hm2 = new HashMap<>(); //Store the 'index' and the value of List2
-		int i = 1, j = 1;
+	return reverse(addTwoNumbers(l1,l2));
+}
 
-		while (l1 != null) {
-			hm1.put(i, l1.val);
-			l1 = l1.next;
-			i++;
-		}
-		while (l2 != null) {
-			hm2.put(j, l2.val);
-			l2 = l2.next;
-			j++;
-		}
-
-		int carry = 0;
-		i--;
-		j--;
+	public ListNode reverse(ListNode l){
 		ListNode head = null;
 
-		//Create new nodes to the front of a new LinkedList
-		while (i > 0 || j > 0 || carry > 0) {
-
-			int a = i > 0 ? hm1.get(i) : 0;
-			int b = j > 0 ? hm2.get(j) : 0;
-			int res = (a + b + carry) % 10;
-
-			ListNode newNode = new ListNode(res);
-			newNode.next = head;
-			head = newNode;
-
-			carry = (a + b + carry) / 10;
-			i--;
-			j--;
+		while (l != null){
+			ListNode temp = l.next;
+			l.next = head;
+			head = l;
+			l = temp;
 		}
+
 		return head;
+	}
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		int carry = 0;
+
+		ListNode newHead = new ListNode(0);
+		ListNode p1 = l1, p2 = l2, p3 = newHead;
+
+		while (p1 != null || p2 != null) {
+			if (p1 != null) {
+				carry += p1.val;
+				p1 = p1.next;
+			}
+
+			if (p2 != null) {
+				carry += p2.val;
+				p2 = p2.next;
+			}
+
+			p3.next = new ListNode(carry % 10);
+			p3 = p3.next;
+			carry /= 10;
+		}
+
+		if (carry !=0)
+			p3.next = new ListNode(carry);
+
+		return newHead.next;
+	}
+
+	ListNode addTwoNumbersStack(ListNode l1, ListNode l2) {
+		Stack<Integer> s1  = new Stack<>();
+		Stack<Integer> s2  = new Stack<>();
+		while (l1 !=null) {
+			s1.push(l1.val);
+			l1 = l1.next;
+		}
+		while (l2 != null) {
+			s2.push(l2.val);
+			l2 = l2.next;
+		}
+		int carry = 0;
+		ListNode res = new ListNode(0);
+		while (!s1.empty() || !s2.empty()) {
+			if (!s1.empty())
+			{
+				carry += s1.pop();
+			}
+			if (!s2.empty())
+			{
+				carry +=  s2.pop();
+			}
+			res.val = carry % 10;
+			ListNode head = new ListNode(carry / 10);
+			head.next = res;
+			res = head;
+			carry /= 10;
+		}
+		return res.val == 0 ? res.next : res;
 	}
 }

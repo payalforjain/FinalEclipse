@@ -21,7 +21,7 @@ Output: true
 	 */
 	public boolean containsDuplicate(int[] nums) {
 		Set<Integer> set = new HashSet<>(nums.length);
-		for (int x: nums) {
+		for (int x : nums) {
 			if (set.contains(x)) return true;
 			set.add(x);
 		}
@@ -45,11 +45,20 @@ Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
 */
 	public boolean containsNearbyDuplicate(int[] nums, int k) {
-		Set<Integer> set = new HashSet<Integer>();
-		for(int i = 0; i < nums.length; i++){
-			if(i > k) set.remove(nums[i-k-1]);
-			if(!set.add(nums[i])) return true;
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+		for (int i = 0; i < nums.length; i++) {
+			if (map.containsKey(nums[i])) {
+				int pre = map.get(nums[i]);
+				if (i - pre <= k)
+					return true;
+			}
+
+			map.put(nums[i], i);
 		}
+
 		return false;
 	}
+
+
 }

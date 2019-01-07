@@ -26,6 +26,22 @@ Output: false
 
     public boolean isPowerOfTwo(int n) {
 
+        if(n == 0)
+        {
+            return false;
+        }
+
+        if(n ==1)
+        {
+            return true;
+        }
+
+        return (n%2==0) && isPowerOfTwo(n/2);
+
+    }
+
+    public boolean isPowerOfTwoIter(int n) {
+
         if (n == 0)
             return false;
 
@@ -57,25 +73,6 @@ Output: false
         }
         return false;
     }
-
-    /*
-     * checking if number is power of 2 using brute force starts with 1,
-     * multiplying with 2 it will eventually be same as original number
-     */
-    private static boolean powerOfTwo(int number) {
-        int square = 1;
-        while (number >= square) {
-            if (number == square) {
-                return true;
-            }
-            square = square * 2;
-        }
-        return false;
-    }
-
-    /*
-     * find if an integer number is power of 2 or not using bit shift operator
-     */
 
 
 }
