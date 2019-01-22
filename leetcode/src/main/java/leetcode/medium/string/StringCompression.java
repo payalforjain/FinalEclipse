@@ -1,4 +1,4 @@
-package leetcode.easy.stringManipulation;
+package leetcode.medium.string;
 
 public class StringCompression {
 /*

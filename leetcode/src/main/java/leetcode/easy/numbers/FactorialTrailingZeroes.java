@@ -22,4 +22,10 @@ Seen this question in a real interview before?   Yes
 	        return sum;
 	    }
 
+
+	    public static void	main(String[] args)
+		{
+			FactorialTrailingZeroes f = new FactorialTrailingZeroes();
+			System.out.println(f.trailingZeroes(20));
+		}
 }

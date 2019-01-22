@@ -18,12 +18,45 @@ Example:
 Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 8 -> 0 -> 7
  */
-public ListNode addLists2(ListNode l1, ListNode l2) {
-	l1 = reverse(l1);
-	l2 = reverse(l2);
 
-	return reverse(addTwoNumbers(l1,l2));
-}
+
+	ListNode addTwoNumbersStack(ListNode l1, ListNode l2) {
+		Stack<Integer> s1  = new Stack<>();
+		Stack<Integer> s2  = new Stack<>();
+		while (l1 !=null) {
+			s1.push(l1.val);
+			l1 = l1.next;
+		}
+		while (l2 != null) {
+			s2.push(l2.val);
+			l2 = l2.next;
+		}
+		int carry = 0;
+		ListNode res = new ListNode(0);
+		while (!s1.empty() || !s2.empty()) {
+			if (!s1.empty())
+			{
+				carry += s1.pop();
+			}
+			if (!s2.empty())
+			{
+				carry +=  s2.pop();
+			}
+			res.val = carry % 10;
+			ListNode head = new ListNode(carry / 10);
+			head.next = res;
+			res = head;
+			carry /= 10;
+		}
+		return res.val == 0 ? res.next : res;
+	}
+
+	public ListNode addLists2(ListNode l1, ListNode l2) {
+		l1 = reverse(l1);
+		l2 = reverse(l2);
+
+		return reverse(addTwoNumbers(l1,l2));
+	}
 
 	public ListNode reverse(ListNode l){
 		ListNode head = null;
@@ -63,36 +96,5 @@ public ListNode addLists2(ListNode l1, ListNode l2) {
 			p3.next = new ListNode(carry);
 
 		return newHead.next;
-	}
-
-	ListNode addTwoNumbersStack(ListNode l1, ListNode l2) {
-		Stack<Integer> s1  = new Stack<>();
-		Stack<Integer> s2  = new Stack<>();
-		while (l1 !=null) {
-			s1.push(l1.val);
-			l1 = l1.next;
-		}
-		while (l2 != null) {
-			s2.push(l2.val);
-			l2 = l2.next;
-		}
-		int carry = 0;
-		ListNode res = new ListNode(0);
-		while (!s1.empty() || !s2.empty()) {
-			if (!s1.empty())
-			{
-				carry += s1.pop();
-			}
-			if (!s2.empty())
-			{
-				carry +=  s2.pop();
-			}
-			res.val = carry % 10;
-			ListNode head = new ListNode(carry / 10);
-			head.next = res;
-			res = head;
-			carry /= 10;
-		}
-		return res.val == 0 ? res.next : res;
 	}
 }

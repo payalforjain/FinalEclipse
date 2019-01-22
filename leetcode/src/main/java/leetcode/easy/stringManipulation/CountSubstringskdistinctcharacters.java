@@ -57,4 +57,33 @@ Possible substrings are {"a", "a", "aa"}
 
         return res;
     }
+    int countkDistTry(String input, int k )
+    {
+        int result = 0;
+        int[] map = new int[26];
+        int distinct = 0;
+        for(int i = 0 ; i < input.length() ; i++)
+        {
+            distinct = 0;
+            map = new int[26];
+            for(int j = i;  j < input.length() ; j++)
+            {
+                if(map[ input.charAt(j) - 'a'] == 0)
+                    distinct++;
+
+                map[ input.charAt(j) - 'a']++;
+
+                if(distinct == k )
+                    result ++;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args)
+    {
+        CountSubstringskdistinctcharacters c = new CountSubstringskdistinctcharacters();
+        c.countkDistTry("pqpqs" , 2);
+    }
 }

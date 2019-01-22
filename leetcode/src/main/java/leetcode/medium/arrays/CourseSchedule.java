@@ -32,6 +32,8 @@ You may assume that there are no duplicate edges in the input prerequisites.
             throw new IllegalArgumentException("illegal prerequisites array");
         }
 
+
+
         int len = prerequisites.length;
 
         if(numCourses == 0 || len == 0){

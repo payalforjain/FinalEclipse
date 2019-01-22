@@ -51,32 +51,5 @@ Could you do this in one pass?
 	    return head;
 	}
 
-	void printNthFromLast(ListNode head,int n)
-	{
-		ListNode main_ptr = head;
-		ListNode ref_ptr = head;
 
-		int count = 0;
-		if (head != null)
-		{
-			while (count < n)
-			{
-				if (ref_ptr == null)
-				{
-					System.out.println(n+" is greater than the no "+
-							" of nodes in the list");
-					return;
-				}
-				ref_ptr = ref_ptr.next;
-				count++;
-			}
-			while (ref_ptr != null)
-			{
-				main_ptr = main_ptr.next;
-				ref_ptr = ref_ptr.next;
-			}
-			System.out.println("Node no. "+n+" from last is "+
-					main_ptr.val);
-		}
-	}
 }

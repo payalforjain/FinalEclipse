@@ -57,27 +57,11 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 		int length = p.length();
 		for (int i = 0; i < s.length() - length + 1; i++) {
 			String temp = s.substring(i, i + length);
-			if (isAnagram(temp, p)) {
+			if (checkAnagram(temp, p)) {
 				output.add(i);
 			}
 		}
 		return output;
-	}
-// Time Limit Exceeded
-	public static boolean isAnagram(String word, String anagram) {
-		if (word.length() != anagram.length()) {
-			return false;
-		}
-		char[] chars = word.toCharArray();
-		for (char c : chars) {
-			int index = anagram.indexOf(c);
-			if (index != -1) {
-				anagram = anagram.substring(0, index) + anagram.substring(index + 1, anagram.length());
-			} else {
-				return false;
-			}
-		}
-		return anagram.isEmpty();
 	}
 
 
@@ -150,30 +134,7 @@ An anagram is a type of word play, the result of rearranging the letters of a wo
 
 If two strings are anagram to each other, their sorted sequence is the same.
  */
-	public List<List<String>> groupAnagrams(String[] strs) {
-		List<List<String>> result = new ArrayList<List<String>>();
 
-		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
-		for(String str: strs){
-			char[] arr = new char[26];
-			for(int i=0; i<str.length(); i++){
-				arr[str.charAt(i)-'a']++;
-			}
-			String ns = new String(arr);
-
-			if(map.containsKey(ns)){
-				map.get(ns).add(str);
-			}else{
-				ArrayList<String> al = new ArrayList<String>();
-				al.add(str);
-				map.put(ns, al);
-			}
-		}
-
-		result.addAll(map.values());
-
-		return result;
-	}
 
 	public List<List<String>> groupAnagramsChar(String[] strs) {
 		List<List<String>> result = new ArrayList<List<String>>();
@@ -202,21 +163,5 @@ If two strings are anagram to each other, their sorted sequence is the same.
 		return result;
 	}
 
-	public void anagram(String a , String b) {
-		a = a.toLowerCase();
-		b=  b.toLowerCase();
 
-		if (a.length() != b.length())
-			System.out.println("Not Anagram");
-		int[] table = new int[26];
-		for (char c : a.toCharArray()) {
-			table[c - 'a']++;
-		}
-		for (char c : b.toCharArray()) {
-			table[c - 'a']--;
-			if (table[c - 'a'] < 0)
-				System.out.println("Not Anagram");
-		}
-		System.out.println("Anagram");
-	}
 }

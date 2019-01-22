@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 // This class represents a directed graph using adjacency list
 // representation
-class Graph {
+class 	Graph {
 	private int V; // No. of vertices
 	private LinkedList<Integer> adj[]; // Adjacency List Represntation
 

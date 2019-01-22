@@ -58,19 +58,31 @@ A solution set is:
         backtrack(list, new ArrayList<>(), nums, target, 0);
         return list;
     }
-
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
+/*
+Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+[
+  [7],
+  [2,2,3]
+]
+ */
+    private void backtrack(List<List<Integer>> result, List<Integer> current, int [] nums, int remain, int start){
         if(remain < 0) return;
-        else if(remain == 0) list.add(new ArrayList<>(tempList));
+        else if(remain == 0) result.add(new ArrayList<>(current));
         else{
             for(int i = start; i < nums.length; i++){
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
-                tempList.remove(tempList.size() - 1);
+                current.add(nums[i]);
+                backtrack(result, current, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+                current.remove(current.size() - 1);
             }
         }
     }
 
+    public static void main(String[] args)
+    {
+        CombinationalSum s = new CombinationalSum();
+        System.out.println(s.combinationSum2DFS(new int[] {2,3,6,7} , 7));
+    }
     //Combination Sum II (can't reuse same element)
 
     public List<List<Integer>> combinationSum2DFS(int[] nums, int target) {
@@ -86,9 +98,10 @@ A solution set is:
         else if(remain == 0) list.add(new ArrayList<>(tempList));
         else{
             for(int i = start; i < nums.length; i++){
-                if(i > start && nums[i] == nums[i-1]) continue; // skip duplicates
+                if(i > start && nums[i] == nums[i-1])
+                    continue; // skip duplicates
                 tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i + 1);
+                backtrack2(list, tempList, nums, remain - nums[i], i + 1);
                 tempList.remove(tempList.size() - 1);
             }
         }

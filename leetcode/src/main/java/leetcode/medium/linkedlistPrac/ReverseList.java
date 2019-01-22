@@ -61,6 +61,6 @@ curr = next
         head1.next.next = new ListNode(3);
         head1.next.next.next = new ListNode(4);
         head1.next.next.next.next = new ListNode(5);
-        r.reverseListIter(head1);
+        r.reverseList(head1);
     }
 }

@@ -18,8 +18,10 @@ The input strings only contain lower case letters.
 The length of both given strings is in range [1, 10,000].
  */
 	/*
-	Instead of making use of a special HashMap datastructure just to store the frequency of occurence of characters, we can use a simpler array data structure to store the frequencies.
-	 Given strings contains only lowercase alphabets ('a' to 'z'). So we need to take an array of size 26.The rest of the process remains the same as the last approach.
+	Instead of making use of a special HashMap datastructure
+	just to store the frequency of occurence of characters, we can use a simpler array data structure to store the frequencies.
+	 Given strings contains only lowercase alphabets ('a' to 'z').
+	  So we need to take an array of size 26.The rest of the process remains the same as the last approach.
 	 */
 	//Other Solution works but time will be exceeded
 	public boolean checkInclusion(String s1, String s2) {
