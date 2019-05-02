@@ -28,4 +28,10 @@ public class LargestNumber {
 		 
 		    return sb.toString();
 		}
+
+		public static void main(String[] args)
+		{
+			LargestNumber l = new LargestNumber();
+			l.largestNumber(new int[] {3,30,34,5,9});
+		}
 }

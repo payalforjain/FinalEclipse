@@ -31,30 +31,48 @@ Output: 1->1->2->3->4->4
 		if (l2 != null) cur.next = l2;
 		return dummy.next;
 	}
-	public ListNode mergeTwoLists(ListNode a, ListNode b) {
+
+	/*
+	Time complexity : O(n + m)O(n+m)
+
+Because exactly one of l1 and l2 is incremented on each loop iteration, the while loop runs for a number of iterations equal to the sum of the lengths of the two lists. All other work is constant, so the overall complexity is linear.
+
+Space complexity : O(1)O(1)
+	 */
+	public ListNode mergeTwoLists(ListNode p1, ListNode p2) {
 
 
-		ListNode result = null;
 
-		/* Base cases */
-		if (a == null)
-			return(b);
-		else if (b==null)
-			return(a);
-
-		/* Pick either a or b, and recur */
-		if (a.val <= b.val)
+		if( p1 == null)
 		{
-			result = a;
-			result.next =mergeTwoLists(a.next, b);
+			return p2;
+		}
+		if (p2 == null)
+		{
+			return p1;
+		}
+
+
+		if(p1.val <= p2.val)
+		{
+			p1.next =  mergeTwoLists(p1.next , p2);
+			return p1;
 		}
 		else
 		{
-			result = b;
-			result.next = mergeTwoLists(a, b.next);
+			p2.next =  mergeTwoLists(p1 , p2.next);
+			return p2;
 		}
-		return result;
 
 	}
+
+
+	/*
+	Time complexity : O(n + m)O(n+m)
+
+Because each recursive call increments the pointer to l1 or l2 by one (approaching the dangling null at the end of each list), there will be exactly one call to mergeTwoLists per element in each list. Therefore, the time complexity is linear in the combined size of the lists.
+
+Space complexity : O(n + m)O(n+m)The first call to mergeTwoLists does not return until the ends of both l1 and l2 have been reached, so n + mn+m stack frames consume O(n + m)O(n+m) space.
+	 */
 
 }

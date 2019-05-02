@@ -2,6 +2,9 @@ package leetcode.easy.LinkedList;
 
 import leetcode.Model.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class DetectCycle {
 /*
 
@@ -22,6 +25,19 @@ Can you solve it without using extra space?
 				return true;
 		}
 
+		return false;
+	}
+
+	public boolean hasCycleExtraSpace(ListNode head) {
+		Set<ListNode> nodesSeen = new HashSet<>();
+		while (head != null) {
+			if (nodesSeen.contains(head)) {
+				return true;
+			} else {
+				nodesSeen.add(head);
+			}
+			head = head.next;
+		}
 		return false;
 	}
 

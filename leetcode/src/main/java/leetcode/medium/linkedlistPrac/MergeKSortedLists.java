@@ -18,6 +18,7 @@ Input:
 ]
 Output: 1->1->2->3->4->4->5->6
  */
+/*
     public ListNode mergeKLists(List<ListNode> lists) {
         if (lists.size() == 0) {
             return null;
@@ -35,7 +36,25 @@ Output: 1->1->2->3->4->4->5->6
         ListNode right = mergeHelper(lists, mid + 1, end);
         return merge(left, right);
     }
+ */
 
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+        return mergeHelper(lists, 0, lists.length - 1);
+    }
+
+    private ListNode mergeHelper(ListNode[] lists, int start, int end) {
+        if (start == end) {
+            return lists[start];
+        }
+
+        int mid = start + (end - start) / 2;
+        ListNode left = mergeHelper(lists, start, mid);
+        ListNode right = mergeHelper(lists, mid + 1, end);
+        return merge(left, right);
+    }
 
     private ListNode merge(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
@@ -55,7 +74,24 @@ Output: 1->1->2->3->4->4->5->6
         return dummy.next;
     }
 
-    public ListNode mergeKLists(ListNode[] lists) {
+    /*
+    Time complexity : O(N\log k)O(Nlogk) where \text{k}k is the number of linked lists.
+
+We can merge two sorted linked list in O(n)O(n) time where nn is the total number of nodes in two lists.
+Sum up the merge process and we can get: O\big(\sum_{i=1}^{log_{2}{k}}N \big)= O(N\log k)O(∑
+i=1
+log
+2
+​
+ k
+​
+ N)=O(Nlogk)
+Space complexity : O(1)O(1)
+
+We can merge two sorted linked lists in O(1)O(1) space.
+     */
+
+    public ListNode mergeKListsPQ(ListNode[] lists) {
         if(lists==null||lists.length==0)
             return null;
         //this will sory by first head of every node
@@ -70,7 +106,8 @@ Output: 1->1->2->3->4->4->5->6
 
         for(ListNode list: lists)
         {
-            queue.add(list);
+            if(list != null)
+                queue.add(list);
         }
 
 
@@ -86,6 +123,17 @@ Output: 1->1->2->3->4->4->5->6
         return head.next;
 
     }
+
+    /*
+    Time complexity : O(N\log k)O(Nlogk) where \text{k}k is the number of linked lists.
+
+The comparison cost will be reduced to O(\log k)O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1)O(1) time.
+There are NN nodes in the final linked list.
+Space complexity :
+
+O(n)O(n) Creating a new linked list costs O(n)O(n) space.
+O(k)O(k) The code above present applies in-place method which cost O(1)O(1) space. And the priority queue (often implemented with heaps) costs O(k)O(k) space (it's far less than NN in most situations).
+     */
 //log(k) * n.
     public static void  main(String[] args)
     {
